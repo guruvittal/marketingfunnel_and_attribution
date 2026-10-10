@@ -1,0 +1,9 @@
+campaign_id,campaign_name,channel,weekly_budget,target_roas
+CAMP_01,Q4_Search_Brand_Electronics,Paid Search,3000.0,4.5
+CAMP_02,Q4_Search_Generic_Audio,Paid Search,4500.0,3.0
+CAMP_03,Q4_Meta_IG_Retargeting,Paid Social,3750.0,3.5
+CAMP_04,Q4_TikTok_Prospecting_GenZ,Paid Social,5500.0,2.2
+CAMP_05,Q4_Affiliate_TechReview_Blogs,Affiliate,2000.0,5.0
+CAMP_06,Q4_Affiliate_Coupon_Sites,Affiliate,1500.0,4.0
+CAMP_07,Q4_Email_Cart_Abandonment,Email Marketing,625.0,8.0
+CAMP_08,Q4_Email_VIP_Weekly_Drop,Email Marketing,875.0,6.5

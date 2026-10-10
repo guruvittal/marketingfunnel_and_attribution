@@ -1,0 +1,9 @@
+product_id,product_name,category,cost_of_goods,retail_price
+PROD_101,Pulse ANC Headphones V2,Audio,120.0,299.99
+PROD_102,BassWave True Wireless Earbuds,Audio,40.0,99.99
+PROD_103,Pulse Soundbar 5.1 System,Home Theater,180.0,449.99
+PROD_104,"UltraVision 65"" 4K OLED TV",Television,750.0,1499.99
+PROD_105,"VisionPro 34"" Curved Gaming Monitor",Monitors,310.0,599.99
+PROD_106,Mechanical RGB Gaming Keyboard,Accessories,35.0,119.99
+PROD_107,Precision Pro Wireless Gaming Mouse,Accessories,25.0,79.99
+PROD_108,100W Fast-Charge USB-C Dock,Accessories,20.0,59.99

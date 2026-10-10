@@ -1,0 +1,37 @@
+{
+  "name": "Marketing-Attribution-Agent",
+  "id": "marketing-attribution-agent",
+  "description": "BigQuery Conversational Analytics (CA) agent answering questions about marketing touchpoints, attribution graphs, campaign ROAS, and customer conversion journeys.",
+  "version": "1.0.0",
+  "endpoints": {
+    "gemini_enterprise_app": "projects/${PROJECT_ID}/locations/global/collections/default_collection/engines/${ENGINE_ID}",
+    "agent_resource_id": "projects/${PROJECT_ID}/locations/global/engines/${ENGINE_ID}/agentic/agents/marketing-attribution-agent"
+  },
+  "capabilities": [
+    "conversational_analytics",
+    "bigquery_graph_query_generation",
+    "multi_touch_attribution_analysis",
+    "roas_calculation_and_forecasting",
+    "customer_journey_mapping"
+  ],
+  "attached_data": {
+    "project_id": "${PROJECT_ID}",
+    "dataset_id": "eRetail_marketing",
+    "property_graphs": [
+      "eCommerce_Integrated"
+    ],
+    "tables": [
+      "campaigns",
+      "touchpoints",
+      "customers",
+      "orders",
+      "order_items",
+      "products",
+      "edge_influenced"
+    ]
+  },
+  "metadata": {
+    "auth_type": "OAUTH2_OR_GCP_SERVICE_ACCOUNT",
+    "last_updated": "2026-09-28T13:54:00Z"
+  }
+}
