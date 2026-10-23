@@ -1,5 +1,5 @@
 -- ============================================================================
--- Step 5.1: Inspect Declared Semantic Measures via INFORMATION_SCHEMA
+-- Step 5: Inspect Declared Semantic Measures via INFORMATION_SCHEMA
 -- Graph: thelook_graph.eCommerce_Integrated
 -- Description: Dynamically query BigQuery metadata to discover all declared
 --              MEASURE definitions, target node tables, expressions, and types.

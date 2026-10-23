@@ -1,7 +1,7 @@
 {
   "name": "Marketing-Attribution-Agent",
   "id": "marketing-attribution-agent",
-  "description": "BigQuery Conversational Analytics (CA) agent answering questions about marketing touchpoints, attribution graphs, channel ROAS, and customer conversion journeys using thelook_ecommerce.",
+  "description": "BigQuery Conversational Analytics (CA) agent answering questions about marketing touchpoints, attribution graphs, campaign ROAS, and customer conversion journeys using thelook_ecommerce.",
   "version": "2.0.0",
   "endpoints": {
     "gemini_enterprise_app": "projects/${PROJECT_ID}/locations/global/collections/default_collection/engines/${ENGINE_ID}",
@@ -21,9 +21,9 @@
       "eCommerce_Integrated"
     ],
     "tables": [
-      "marketing_channels",
+      "marketing_campaigns",
+      "touchpoints",
       "edge_influenced",
-      "bigquery-public-data.thelook_ecommerce.events",
       "bigquery-public-data.thelook_ecommerce.users",
       "bigquery-public-data.thelook_ecommerce.orders",
       "bigquery-public-data.thelook_ecommerce.order_items",
@@ -32,6 +32,6 @@
   },
   "metadata": {
     "auth_type": "OAUTH2_OR_GCP_SERVICE_ACCOUNT",
-    "last_updated": "2026-10-23T03:15:00Z"
+    "last_updated": "2026-10-23T03:52:00Z"
   }
 }

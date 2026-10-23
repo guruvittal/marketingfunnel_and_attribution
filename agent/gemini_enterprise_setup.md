@@ -70,7 +70,7 @@ Once deployed, the agent is immediately discoverable and callable within Gemini 
 [Marketing-Attribution-Agent (Conversational Analytics)]
        │
        ├─► Generates GRAPH_TABLE on eCommerce_Integrated (profit attribution)
-       ├─► OR generates GRAPH_EXPAND on eCommerce_Integrated (macro budget rollups via start_node)
+       ├─► OR generates GRAPH_EXPAND on eCommerce_Integrated (macro budget rollups via start_node => "touchpoints")
        │
        ▼
 [BigQuery Engine]
@@ -79,6 +79,6 @@ Once deployed, the agent is immediately discoverable and callable within Gemini 
 [Agent Synthesis & Natural Language Response]
        │
        ▼
-"Email marketing delivered the highest ROAS at 341.6x ($1.77M gross profit on a $10K budget).
-Adwords generated $6.02M gross profit with a 241.1x ROAS on a $50K budget across 876K sessions."
+"Email marketing campaigns delivered the highest efficiency with over 28x ROAS on spend ($1.84M attributed revenue per campaign on under $66K ad spend).
+Paid Search generated $2.40M in attributed revenue across Brand and Generic campaigns, yielding $1.25M in gross profit at ~51.9% gross margin."
 ```
