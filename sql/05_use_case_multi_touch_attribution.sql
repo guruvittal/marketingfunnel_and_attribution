@@ -1,5 +1,5 @@
 -- ============================================================================
--- Step 7: Use Case 1 - Multi-Touch Marketing Attribution Comparison
+-- Step 8: Use Case 2 - Multi-Touch Marketing Attribution Comparison
 -- Graph: thelook_graph.eCommerce_Integrated
 -- Operator: GRAPH_TABLE with First-Touch, Last-Touch, and Linear Weighting
 -- Scenario: Compare revenue credit assigned to each marketing campaign across

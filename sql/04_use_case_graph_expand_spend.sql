@@ -1,13 +1,13 @@
 -- ============================================================================
--- Step 9: Use Case 3 - Multi-Grain Reporting with GRAPH_EXPAND and AGG()
+-- Step 7: Use Case 1 - Top-of-Funnel Campaign Spend & Budget Rollup (GRAPH_EXPAND)
 -- Graph: thelook_graph.eCommerce_Integrated
--- Operator: GRAPH_EXPAND with declared MEASUREs
--- Scenario: Safely roll up upstream variables (total_budget at campaign grain)
---           alongside downstream interaction measures (total_clicks, unique_reach, total_ad_spend)
---           without fan-out multiplication error or complex CTE joins.
+-- Operator: GRAPH_EXPAND with declared MEASUREs & AGG()
+-- Scenario: Executive & BI rollup of campaign budgets against touchpoint ad spend,
+--           click volume, unique reach, remaining budget, and effective average CPC
+--           without Cartesian budget explosion, extracting the marketing branch.
 -- ============================================================================
 
--- Query 1: Executive Campaign Budget vs. Ad Spend & Reach Scorecard (Touchpoints root)
+-- Query 1: Executive 8-Column Campaign Budget vs. Ad Spend & Reach Scorecard (Touchpoints root)
 SELECT
   campaigns_channel AS channel,
   campaigns_campaign_name AS campaign_name,

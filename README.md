@@ -46,9 +46,9 @@
 │   ├── 01_setup_schema_and_graph.sql          # Dataset, views, edge table, & Property Graph DDL (10 MEASUREs)
 │   ├── 02_measure_introspection.sql           # INFORMATION_SCHEMA.PROPERTY_GRAPHS introspection
 │   ├── 03_cartesian_fanout_benchmark.sql      # Cartesian explosion benchmark (Relational JOIN vs. Graph)
-│   ├── 04_use_case_multi_touch_attribution.sql# Multi-touch attribution (First, Last, & Linear touch)
-│   ├── 05_use_case_channel_profitability.sql  # 4-hop profitability & Gross Margin % traversal
-│   ├── 06_use_case_graph_expand.sql           # Multi-grain reporting with GRAPH_EXPAND and AGG()
+│   ├── 04_use_case_graph_expand_spend.sql     # Top-of-funnel campaign spend & budget rollup (GRAPH_EXPAND)
+│   ├── 05_use_case_multi_touch_attribution.sql# Multi-touch attribution (First, Last, & Linear touch)
+│   ├── 06_use_case_channel_profitability.sql  # 4-hop profitability & Gross Margin % traversal
 │   ├── 07_use_case_customer_journey.sql       # Pure ISO GQL customer journey traversal & TO_JSON()
 │   ├── 08_use_case_combined_roas_scorecard.sql# Unified ROAS Scorecard (GRAPH_EXPAND + GRAPH_TABLE CTE)
 │   └── 09_plain_sql_vs_graph_guide.sql        # Decision guide: SUM() vs. Relational JOIN vs. Graph
@@ -70,11 +70,11 @@
 | **4** | **Declaring Property Graph & Measures** | DDL (`PROPERTY GRAPH`) | Master graph `eCommerce_Integrated` with 10 semantic measures. |
 | **5** | **Measure Introspection** | `INFORMATION_SCHEMA` | Unnest declared measures dynamically from graph metadata. |
 | **6** | **Cartesian Fan-Out Benchmark** | Relational `JOIN` vs. Graph | Demonstrate the 1,111,635x upstream budget explosion and graph solution. |
-| **7** | **Multi-Touch Attribution** | `GRAPH_TABLE` | Compare First-Touch, Last-Touch, and Linear attribution across 8 campaigns. |
-| **8** | **4-Hop Profitability & Margin** | `GRAPH_TABLE` (4-hop) | Traverse touchpoint $\to$ order $\to$ item $\to$ product to compute Gross Margin % (~51.9%). |
-| **9** | **Multi-Grain Scorecard** | `GRAPH_EXPAND` + `AGG()` | 8-column executive scorecard tracking budget, clicks, reach, spend, and CPC. |
-| **10** | **Customer Journey Mapping** | Pure ISO GQL | Trace multi-session browsing journeys for high-intent converted users (e.g., User 65516 / Paul). |
-| **11** | **Unified Executive Scorecard** | Dual-View CTE | Combine `GRAPH_EXPAND` (spend & budget) with `GRAPH_TABLE` (profit) for True ROAS. |
+| **7** | **Use Case 1: Top-of-Funnel Performance** | `GRAPH_EXPAND` + `AGG()` | 8-column executive scorecard tracking budget, clicks, reach, spend, and CPC. |
+| **8** | **Use Case 2: Multi-Touch Attribution** | `GRAPH_TABLE` | Compare First-Touch, Last-Touch, and Linear attribution across 8 campaigns. |
+| **9** | **Use Case 3: 4-Hop Profitability & Margin** | `GRAPH_TABLE` (4-hop) | Traverse touchpoint $\to$ order $\to$ item $\to$ product to compute Gross Margin % (~51.9%). |
+| **10** | **Use Case 4: Customer Journey Mapping** | Pure ISO GQL | Trace multi-session browsing journeys for high-intent converted users (e.g., User 65516 / Paul). |
+| **11** | **Use Case 5: Unified Executive Scorecard** | Dual-View CTE | Combine `GRAPH_EXPAND` (spend & budget) with `GRAPH_TABLE` (profit) for True ROAS. |
 | **12** | **Conversational Analytics Agent** | BigQuery Studio / CA | Ground AI agents in BigQuery Studio with semantic measures and deploy to Gemini Enterprise. |
 | **13** | **Decision Guide & Clean Up** | Architecture Guide | Decision matrix from single-table `SUM()` to `GRAPH_EXPAND` + resource cleanup. |
 | **14** | **Conclusion & Key Takeaways** | Summary | Milestone achievement summary and next steps. |

@@ -608,21 +608,21 @@
         <li class="step-item" onclick="goToStep(6)">
           <div class="step-label">
             <span class="step-number">7</span>
-            <span>Use Case 1: Multi-Touch Attribution</span>
+            <span>Use Case 1: Top-of-Funnel Performance</span>
           </div>
           <span class="step-duration">8 min</span>
         </li>
         <li class="step-item" onclick="goToStep(7)">
           <div class="step-label">
             <span class="step-number">8</span>
-            <span>Use Case 2: 4-Hop Profitability</span>
+            <span>Use Case 2: Multi-Touch Attribution</span>
           </div>
           <span class="step-duration">8 min</span>
         </li>
         <li class="step-item" onclick="goToStep(8)">
           <div class="step-label">
             <span class="step-number">9</span>
-            <span>Use Case 3: Multi-Grain Reporting</span>
+            <span>Use Case 3: 4-Hop Profitability</span>
           </div>
           <span class="step-duration">8 min</span>
         </li>
@@ -698,10 +698,11 @@
           <ol>
             <li><strong>Deploy Zero-Copy Property Graph Modeling:</strong> Create a unified enterprise property graph (<code>eCommerce_Integrated</code>) mapping directly over Google's public e-commerce tables.</li>
             <li><strong>Eliminate Cartesian Fan-Out:</strong> Benchmark naive relational SQL joins (which multiply budgets by 1,111,635x) against BigQuery declared <code>MEASURE</code>s and <code>GRAPH_EXPAND</code>.</li>
+            <li><strong>Top-of-Funnel Campaign Performance:</strong> Deliver a rich 8-column executive scorecard tracking budget, clicks, reach, spend, and effective CPC using <code>GRAPH_EXPAND</code> without budget duplication.</li>
             <li><strong>Multi-Touch Marketing Attribution:</strong> Compare First-Touch, Last-Touch, and Linear Attribution models across 8 campaigns using <code>GRAPH_TABLE</code>.</li>
             <li><strong>End-to-End Profitability & Gross Margin:</strong> Trace 4-hop conversions through to the product catalog to evaluate true Gross Margin % by marketing campaign.</li>
-            <li><strong>Rich Multi-Grain Scorecard:</strong> Deliver an 8-column executive scorecard tracking budget, clicks, reach, spend, and effective CPC using <code>GRAPH_EXPAND</code>.</li>
-            <li><strong>Unified Executive Scorecard:</strong> Fuse <code>GRAPH_EXPAND</code> (safe budget rollups) and <code>GRAPH_TABLE</code> (profit attribution) on the same graph in a single query.</li>
+            <li><strong>Customer Conversion Journey Mapping:</strong> Trace multi-session browsing journeys for high-intent converted users using pure ISO GQL.</li>
+            <li><strong>Unified Executive ROAS Scorecard:</strong> Fuse <code>GRAPH_EXPAND</code> (safe budget rollups) and <code>GRAPH_TABLE</code> (profit attribution) on the same graph in a single query.</li>
             <li><strong>Ground AI Agents in Gemini Enterprise:</strong> Ground a Conversational Analytics Data Agent in BigQuery Studio with declared graph measures.</li>
           </ol>
         </div>
@@ -1249,145 +1250,16 @@ ORDER BY joined_rows DESC;</code></pre>
 
       <!-- STEP 6 -->
       <section class="step-content" id="step-6">
-        <h1 class="step-main-title">7. Use Case 1: Multi-Touch Attribution</h1>
-        <p>Compare the revenue assigned to each marketing campaign across three classic attribution models:</p>
-        <ol>
-          <li><strong>First-Touch Attribution:</strong> Gives 100% of conversion credit to the customer's initial discovery campaign.</li>
-          <li><strong>Last-Touch Attribution:</strong> Gives 100% of conversion credit to the touchpoint immediately preceding the purchase.</li>
-          <li><strong>Linear Attribution:</strong> Distributes credit equally across all touchpoints in the customer's 30-day journey (&sum; w<sub>i</sub> = 1.0).</li>
-        </ol>
-
-        <h2>Query with <code>GRAPH_TABLE</code></h2>
-        <div class="code-container">
-          <div class="code-header">
-            <span>SQL</span>
-            <button class="copy-btn" onclick="copyCode(this)">Copy</button>
-          </div>
-          <pre><code>SELECT
-  campaign_name,
-  channel,
-  ROUND(SUM(sale_price * first_touch_weight), 2) AS first_touch_revenue,
-  ROUND(SUM(sale_price * last_touch_weight), 2) AS last_touch_revenue,
-  ROUND(SUM(sale_price * linear_weight), 2) AS linear_revenue
-FROM GRAPH_TABLE(`thelook_graph.eCommerce_Integrated`
-  MATCH (t:touchpoints)-[i:INFLUENCED]->(o:orders)<-[:BELONGS_TO]-(oi:order_items)
-  COLUMNS (
-    t.campaign_name AS campaign_name,
-    t.channel AS channel,
-    oi.sale_price,
-    i.first_touch_weight,
-    i.last_touch_weight,
-    i.linear_weight
-  )
-)
-GROUP BY campaign_name, channel
-ORDER BY linear_revenue DESC;</code></pre>
-        </div>
-
-        <h2>Verified Query Results</h2>
-        <div class="table-container">
-          <table>
-            <thead>
-              <tr>
-                <th>Campaign Name</th>
-                <th>Channel</th>
-                <th>First-Touch Revenue</th>
-                <th>Last-Touch Revenue</th>
-                <th>Linear Revenue</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr><td><code>Q4_Email_VIP_Weekly_Drop</code></td><td>Email Marketing</td><td>$1,845,315.77</td><td>$1,863,925.04</td><td><strong>$1,843,829.27</strong></td></tr>
-              <tr><td><code>Q4_Email_Cart_Abandonment</code></td><td>Email Marketing</td><td>$1,836,227.46</td><td>$1,832,522.48</td><td><strong>$1,843,706.49</strong></td></tr>
-              <tr><td><code>Q4_Search_Brand_Electronics</code></td><td>Paid Search</td><td>$1,204,988.16</td><td>$1,196,742.64</td><td><strong>$1,202,490.39</strong></td></tr>
-              <tr><td><code>Q4_Search_Generic_Audio</code></td><td>Paid Search</td><td>$1,206,705.37</td><td>$1,212,892.37</td><td><strong>$1,201,800.30</strong></td></tr>
-              <tr><td><code>Q4_YouTube_Video_Awareness</code></td><td>Video</td><td>$786,474.26</td><td>$789,685.75</td><td><strong>$791,187.97</strong></td></tr>
-              <tr><td><code>Organic_Search_SEO</code></td><td>Organic</td><td>$414,224.82</td><td>$405,306.72</td><td><strong>$409,566.57</strong></td></tr>
-              <tr><td><code>Q4_Meta_IG_Retargeting</code></td><td>Paid Social</td><td>$410,408.31</td><td>$402,723.63</td><td><strong>$401,409.26</strong></td></tr>
-              <tr><td><code>Q4_TikTok_Prospecting_GenZ</code></td><td>Paid Social</td><td>$389,434.35</td><td>$389,979.87</td><td><strong>$399,775.09</strong></td></tr>
-            </tbody>
-          </table>
-        </div>
-
-        <h3>Key Marketing Takeaways</h3>
-        <ul>
-          <li><strong>Email dominates both discovery and closing:</strong> Generating ~$1.84M per campaign, demonstrating immense retention power.</li>
-          <li><strong>Mathematical Integrity:</strong> Because &sum; <code>linear_weight</code> = 1.0 for every order, the sum of linear revenue across all campaigns ($8,093,765.34) exactly matches the total revenue of converted orders.</li>
-        </ul>
-      </section>
-
-      <!-- STEP 7 -->
-      <section class="step-content" id="step-7">
-        <h1 class="step-main-title">8. Use Case 2: 4-Hop Profitability</h1>
-        <p>Evaluating campaigns solely on revenue is misleading. A campaign might generate high gross sales by promoting low-margin items. In this 4-hop traversal, we connect touchpoints to orders, line items, and product catalog costs to evaluate true <strong>Gross Profit</strong> and <strong>Gross Margin %</strong>.</p>
+        <h1 class="step-main-title">7. Use Case 1: Top-of-Funnel Campaign Performance (GRAPH_EXPAND)</h1>
+        <p>Marketing executives require a rich 8-column scorecard tracking macro budgets alongside micro interaction metrics (clicks, reach, spend, remaining budget, and effective CPC). They need this without writing complex subqueries or risking Cartesian duplication.</p>
 
         <div class="milestone-callout">
           <div class="milestone-title">
             <span class="material-symbols-outlined" style="color: #f9ab00;">flag</span>
-            🎯 Milestone Checkpoint 3: Multi-Hop Profit Attribution at the Leaf Grain
+            🎯 Milestone Checkpoint: Multi-Grain Top-of-Funnel Performance at Root Grain
           </div>
-          <strong>Objective in Action:</strong> Using BigQuery's <code>GRAPH_TABLE</code> operator, we traverse 4 hops from touchpoints to products and apply leaf-grain weighted aggregations.
+          <strong>Objective in Action:</strong> Using BigQuery's <code>GRAPH_EXPAND</code> operator with declared <code>MEASURE</code>s and <code>AGG()</code>, we project macro budgets and interaction volumes without Cartesian duplication.
         </div>
-
-        <div class="code-container">
-          <div class="code-header">
-            <span>SQL</span>
-            <button class="copy-btn" onclick="copyCode(this)">Copy</button>
-          </div>
-          <pre><code>SELECT
-  campaign_name,
-  channel,
-  ROUND(SUM(sale_price * linear_weight), 2) AS attributed_revenue,
-  ROUND(SUM(cost * linear_weight), 2) AS attributed_cogs,
-  ROUND(SUM((sale_price - cost) * linear_weight), 2) AS gross_profit,
-  ROUND(SAFE_DIVIDE(SUM((sale_price - cost) * linear_weight), SUM(sale_price * linear_weight)) * 100, 2) AS gross_margin_pct
-FROM GRAPH_TABLE(`thelook_graph.eCommerce_Integrated`
-  MATCH (t:touchpoints)-[i:INFLUENCED]->(o:orders)<-[:BELONGS_TO]-(oi:order_items)-[:IS_PRODUCT]->(p:products)
-  COLUMNS (
-    t.campaign_name AS campaign_name,
-    t.channel AS channel,
-    oi.sale_price,
-    p.cost,
-    i.linear_weight
-  )
-)
-GROUP BY campaign_name, channel
-ORDER BY gross_profit DESC;</code></pre>
-        </div>
-
-        <h2>Verified Query Results</h2>
-        <div class="table-container">
-          <table>
-            <thead>
-              <tr>
-                <th>Campaign Name</th>
-                <th>Channel</th>
-                <th>Attributed Revenue</th>
-                <th>Attributed COGS</th>
-                <th>Gross Profit</th>
-                <th>Gross Margin %</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr><td><code>Q4_Email_Cart_Abandonment</code></td><td>Email Marketing</td><td>$1,843,706.49</td><td>$885,737.40</td><td><strong>$957,969.09</strong></td><td><strong>51.96%</strong></td></tr>
-              <tr><td><code>Q4_Email_VIP_Weekly_Drop</code></td><td>Email Marketing</td><td>$1,843,829.27</td><td>$885,979.08</td><td><strong>$957,850.19</strong></td><td><strong>51.95%</strong></td></tr>
-              <tr><td><code>Q4_Search_Brand_Electronics</code></td><td>Paid Search</td><td>$1,202,490.39</td><td>$578,564.40</td><td><strong>$623,926.00</strong></td><td><strong>51.89%</strong></td></tr>
-              <tr><td><code>Q4_Search_Generic_Audio</code></td><td>Paid Search</td><td>$1,201,800.30</td><td>$578,539.58</td><td><strong>$623,260.72</strong></td><td><strong>51.86%</strong></td></tr>
-              <tr><td><code>Q4_YouTube_Video_Awareness</code></td><td>Video</td><td>$791,187.97</td><td>$380,320.71</td><td><strong>$410,867.26</strong></td><td><strong>51.93%</strong></td></tr>
-              <tr><td><code>Organic_Search_SEO</code></td><td>Organic</td><td>$409,566.57</td><td>$196,346.08</td><td><strong>$213,220.49</strong></td><td><strong>52.06%</strong></td></tr>
-              <tr><td><code>Q4_Meta_IG_Retargeting</code></td><td>Paid Social</td><td>$401,409.26</td><td>$193,276.98</td><td><strong>$208,132.28</strong></td><td><strong>51.85%</strong></td></tr>
-              <tr><td><code>Q4_TikTok_Prospecting_GenZ</code></td><td>Paid Social</td><td>$399,775.09</td><td>$192,436.82</td><td><strong>$207,338.27</strong></td><td><strong>51.86%</strong></td></tr>
-            </tbody>
-          </table>
-        </div>
-
-        <p>Gross margins are remarkably consistent across campaigns (~51.9%), proving that all channels drive a healthy merchandise product mix.</p>
-      </section>
-
-      <!-- STEP 8 -->
-      <section class="step-content" id="step-8">
-        <h1 class="step-main-title">9. Use Case 3: Multi-Grain Reporting (GRAPH_EXPAND)</h1>
-        <p>Marketing executives require a rich 8-column scorecard tracking macro budgets alongside micro interaction metrics (clicks, reach, spend, remaining budget, and effective CPC). They need this without writing complex subqueries or risking Cartesian duplication.</p>
 
         <h2>Standard SQL Query with <code>GRAPH_EXPAND</code></h2>
         <div class="code-container">
@@ -1515,6 +1387,143 @@ ORDER BY total_ad_spend DESC;</code></pre>
 
         <h3>Key Takeaway</h3>
         <p>Notice that <code>total_budget</code> is completely preserved ($1.5M, $1.1M, $75k, $60k) despite aggregating over 2.4 million touchpoints! <code>GRAPH_EXPAND</code> evaluated the declared measures at their native entity grains without any Cartesian multiplication.</p>
+      </section>
+
+      <!-- STEP 7 -->
+      <section class="step-content" id="step-7">
+        <h1 class="step-main-title">8. Use Case 2: Multi-Touch Attribution (GRAPH_TABLE)</h1>
+        <p>Compare the revenue assigned to each marketing campaign across three classic attribution models:</p>
+        <ol>
+          <li><strong>First-Touch Attribution:</strong> Gives 100% of conversion credit to the customer's initial discovery campaign.</li>
+          <li><strong>Last-Touch Attribution:</strong> Gives 100% of conversion credit to the touchpoint immediately preceding the purchase.</li>
+          <li><strong>Linear Attribution:</strong> Distributes credit equally across all touchpoints in the customer's 30-day journey (&sum; w<sub>i</sub> = 1.0).</li>
+        </ol>
+
+        <h2>Query with <code>GRAPH_TABLE</code></h2>
+        <div class="code-container">
+          <div class="code-header">
+            <span>SQL</span>
+            <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+          </div>
+          <pre><code>SELECT
+  campaign_name,
+  channel,
+  ROUND(SUM(sale_price * first_touch_weight), 2) AS first_touch_revenue,
+  ROUND(SUM(sale_price * last_touch_weight), 2) AS last_touch_revenue,
+  ROUND(SUM(sale_price * linear_weight), 2) AS linear_revenue
+FROM GRAPH_TABLE(`thelook_graph.eCommerce_Integrated`
+  MATCH (t:touchpoints)-[i:INFLUENCED]->(o:orders)<-[:BELONGS_TO]-(oi:order_items)
+  COLUMNS (
+    t.campaign_name AS campaign_name,
+    t.channel AS channel,
+    oi.sale_price,
+    i.first_touch_weight,
+    i.last_touch_weight,
+    i.linear_weight
+  )
+)
+GROUP BY campaign_name, channel
+ORDER BY linear_revenue DESC;</code></pre>
+        </div>
+
+        <h2>Verified Query Results</h2>
+        <div class="table-container">
+          <table>
+            <thead>
+              <tr>
+                <th>Campaign Name</th>
+                <th>Channel</th>
+                <th>First-Touch Revenue</th>
+                <th>Last-Touch Revenue</th>
+                <th>Linear Revenue</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr><td><code>Q4_Email_VIP_Weekly_Drop</code></td><td>Email Marketing</td><td>$1,845,315.77</td><td>$1,863,925.04</td><td><strong>$1,843,829.27</strong></td></tr>
+              <tr><td><code>Q4_Email_Cart_Abandonment</code></td><td>Email Marketing</td><td>$1,836,227.46</td><td>$1,832,522.48</td><td><strong>$1,843,706.49</strong></td></tr>
+              <tr><td><code>Q4_Search_Brand_Electronics</code></td><td>Paid Search</td><td>$1,204,988.16</td><td>$1,196,742.64</td><td><strong>$1,202,490.39</strong></td></tr>
+              <tr><td><code>Q4_Search_Generic_Audio</code></td><td>Paid Search</td><td>$1,206,705.37</td><td>$1,212,892.37</td><td><strong>$1,201,800.30</strong></td></tr>
+              <tr><td><code>Q4_YouTube_Video_Awareness</code></td><td>Video</td><td>$786,474.26</td><td>$789,685.75</td><td><strong>$791,187.97</strong></td></tr>
+              <tr><td><code>Organic_Search_SEO</code></td><td>Organic</td><td>$414,224.82</td><td>$405,306.72</td><td><strong>$409,566.57</strong></td></tr>
+              <tr><td><code>Q4_Meta_IG_Retargeting</code></td><td>Paid Social</td><td>$410,408.31</td><td>$402,723.63</td><td><strong>$401,409.26</strong></td></tr>
+              <tr><td><code>Q4_TikTok_Prospecting_GenZ</code></td><td>Paid Social</td><td>$389,434.35</td><td>$389,979.87</td><td><strong>$399,775.09</strong></td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <h3>Key Marketing Takeaways</h3>
+        <ul>
+          <li><strong>Email dominates both discovery and closing:</strong> Generating ~$1.84M per campaign, demonstrating immense retention power.</li>
+          <li><strong>Mathematical Integrity:</strong> Because &sum; <code>linear_weight</code> = 1.0 for every order, the sum of linear revenue across all campaigns ($8,093,765.34) exactly matches the total revenue of converted orders.</li>
+        </ul>
+      </section>
+
+      <!-- STEP 8 -->
+      <section class="step-content" id="step-8">
+        <h1 class="step-main-title">9. Use Case 3: 4-Hop Profitability & Margin % (GRAPH_TABLE)</h1>
+        <p>Evaluating campaigns solely on revenue is misleading. A campaign might generate high gross sales by promoting low-margin items. In this 4-hop traversal, we connect touchpoints to orders, line items, and product catalog costs to evaluate true <strong>Gross Profit</strong> and <strong>Gross Margin %</strong>.</p>
+
+        <div class="milestone-callout">
+          <div class="milestone-title">
+            <span class="material-symbols-outlined" style="color: #f9ab00;">flag</span>
+            🎯 Milestone Checkpoint 3: Multi-Hop Profit Attribution at the Leaf Grain
+          </div>
+          <strong>Objective in Action:</strong> Using BigQuery's <code>GRAPH_TABLE</code> operator, we traverse 4 hops from touchpoints to products and apply leaf-grain weighted aggregations.
+        </div>
+
+        <div class="code-container">
+          <div class="code-header">
+            <span>SQL</span>
+            <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+          </div>
+          <pre><code>SELECT
+  campaign_name,
+  channel,
+  ROUND(SUM(sale_price * linear_weight), 2) AS attributed_revenue,
+  ROUND(SUM(cost * linear_weight), 2) AS attributed_cogs,
+  ROUND(SUM((sale_price - cost) * linear_weight), 2) AS gross_profit,
+  ROUND(SAFE_DIVIDE(SUM((sale_price - cost) * linear_weight), SUM(sale_price * linear_weight)) * 100, 2) AS gross_margin_pct
+FROM GRAPH_TABLE(`thelook_graph.eCommerce_Integrated`
+  MATCH (t:touchpoints)-[i:INFLUENCED]->(o:orders)<-[:BELONGS_TO]-(oi:order_items)-[:IS_PRODUCT]->(p:products)
+  COLUMNS (
+    t.campaign_name AS campaign_name,
+    t.channel AS channel,
+    oi.sale_price,
+    p.cost,
+    i.linear_weight
+  )
+)
+GROUP BY campaign_name, channel
+ORDER BY gross_profit DESC;</code></pre>
+        </div>
+
+        <h2>Verified Query Results</h2>
+        <div class="table-container">
+          <table>
+            <thead>
+              <tr>
+                <th>Campaign Name</th>
+                <th>Channel</th>
+                <th>Attributed Revenue</th>
+                <th>Attributed COGS</th>
+                <th>Gross Profit</th>
+                <th>Gross Margin %</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr><td><code>Q4_Email_Cart_Abandonment</code></td><td>Email Marketing</td><td>$1,843,706.49</td><td>$885,737.40</td><td><strong>$957,969.09</strong></td><td><strong>51.96%</strong></td></tr>
+              <tr><td><code>Q4_Email_VIP_Weekly_Drop</code></td><td>Email Marketing</td><td>$1,843,829.27</td><td>$885,979.08</td><td><strong>$957,850.19</strong></td><td><strong>51.95%</strong></td></tr>
+              <tr><td><code>Q4_Search_Brand_Electronics</code></td><td>Paid Search</td><td>$1,202,490.39</td><td>$578,564.40</td><td><strong>$623,926.00</strong></td><td><strong>51.89%</strong></td></tr>
+              <tr><td><code>Q4_Search_Generic_Audio</code></td><td>Paid Search</td><td>$1,201,800.30</td><td>$578,539.58</td><td><strong>$623,260.72</strong></td><td><strong>51.86%</strong></td></tr>
+              <tr><td><code>Q4_YouTube_Video_Awareness</code></td><td>Video</td><td>$791,187.97</td><td>$380,320.71</td><td><strong>$410,867.26</strong></td><td><strong>51.93%</strong></td></tr>
+              <tr><td><code>Organic_Search_SEO</code></td><td>Organic</td><td>$409,566.57</td><td>$196,346.08</td><td><strong>$213,220.49</strong></td><td><strong>52.06%</strong></td></tr>
+              <tr><td><code>Q4_Meta_IG_Retargeting</code></td><td>Paid Social</td><td>$401,409.26</td><td>$193,276.98</td><td><strong>$208,132.28</strong></td><td><strong>51.85%</strong></td></tr>
+              <tr><td><code>Q4_TikTok_Prospecting_GenZ</code></td><td>Paid Social</td><td>$399,775.09</td><td>$192,436.82</td><td><strong>$207,338.27</strong></td><td><strong>51.86%</strong></td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <p>Gross margins are remarkably consistent across campaigns (~51.9%), proving that all channels drive a healthy merchandise product mix.</p>
       </section>
 
       <!-- STEP 9 -->
@@ -1934,9 +1943,9 @@ bq rm --reservation \
       "4. Declaring Property Graph & Measures",
       "5. Introspecting Semantic Measures",
       "6. Cartesian Fan-Out Benchmark",
-      "7. Use Case 1: Multi-Touch Attribution",
-      "8. Use Case 2: 4-Hop Profitability",
-      "9. Use Case 3: Multi-Grain Reporting",
+      "7. Use Case 1: Top-of-Funnel Performance",
+      "8. Use Case 2: Multi-Touch Attribution",
+      "9. Use Case 3: 4-Hop Profitability",
       "10. Use Case 4: Customer Journey Mapping",
       "11. Use Case 5: Unified Executive Scorecard",
       "12. Conversational Analytics in BigQuery Studio",

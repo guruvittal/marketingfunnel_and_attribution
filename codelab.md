@@ -439,7 +439,42 @@ ORDER BY joined_rows DESC;
 
 ---
 
-## 7. Use Case 1: Multi-Touch Marketing Attribution Comparison
+## 7. Use Case 1: Top-of-Funnel Campaign Spend & Budget Rollup (GRAPH_EXPAND)
+Duration: 8
+
+Using `GRAPH_EXPAND` with declared `MEASURE`s and `AGG()`, we project macro budgets and micro interaction volumes in a single query without Cartesian explosion, generating an executive 8-column spend & budget rollup:
+
+```sql
+SELECT
+  campaigns_channel AS channel,
+  campaigns_campaign_name AS campaign_name,
+  AGG(campaigns_total_campaign_budget) AS total_budget,
+  AGG(touchpoints_total_clicks) AS total_clicks,
+  AGG(touchpoints_unique_reach) AS unique_reach,
+  ROUND(AGG(touchpoints_total_ad_spend), 2) AS total_ad_spend,
+  ROUND(AGG(campaigns_total_campaign_budget) - AGG(touchpoints_total_ad_spend), 2) AS remaining_budget,
+  ROUND(AGG(touchpoints_total_ad_spend) / NULLIF(AGG(touchpoints_total_clicks), 0), 2) AS effective_avg_cpc
+FROM GRAPH_EXPAND("thelook_graph.eCommerce_Integrated", start_node => "touchpoints")
+GROUP BY channel, campaign_name
+ORDER BY total_ad_spend DESC;
+```
+
+### Query Output
+
+| channel | campaign_name | total_budget | total_clicks | unique_reach | total_ad_spend | remaining_budget | effective_avg_cpc |
+| :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- |
+| **Paid Search** | `Q4_Search_Generic_Audio` | \$1,500,000 | 362,497 | 39,564 | \$1,370,238.66 | \$129,761.34 | **\$3.78** |
+| **Paid Search** | `Q4_Search_Brand_Electronics` | \$1,100,000 | 362,605 | 39,564 | \$957,277.20 | \$142,722.80 | **\$2.64** |
+| **Paid Social** | `Q4_Meta_IG_Retargeting` | \$250,000 | 120,597 | 16,039 | \$223,104.45 | \$26,895.55 | **\$1.85** |
+| **Video** | `Q4_YouTube_Video_Awareness` | \$220,000 | 241,729 | 16,114 | \$205,469.65 | \$14,530.35 | **\$0.85** |
+| **Paid Social** | `Q4_TikTok_Prospecting_GenZ` | \$150,000 | 120,740 | 16,039 | \$119,532.60 | \$30,467.40 | **\$0.99** |
+| **Email Marketing** | `Q4_Email_Cart_Abandonment` | \$75,000 | 546,038 | 52,216 | \$65,524.56 | \$9,475.44 | **\$0.12** |
+| **Email Marketing** | `Q4_Email_VIP_Weekly_Drop` | \$60,000 | 545,691 | 52,216 | \$54,569.10 | \$5,430.90 | **\$0.10** |
+| **Organic** | `Organic_Search_SEO` | \$25,000 | 121,058 | 8,550 | \$0.00 | \$25,000.00 | **\$0.00** |
+
+---
+
+## 8. Use Case 2: Multi-Touch Marketing Attribution Comparison (GRAPH_TABLE)
 Duration: 8
 
 Using `GRAPH_TABLE`, we compare First-Touch, Last-Touch, and Linear Attribution models across our ad campaigns:
@@ -481,7 +516,7 @@ ORDER BY linear_revenue DESC;
 
 ---
 
-## 8. Use Case 2: 4-Hop Campaign Profitability & Gross Margin %
+## 9. Use Case 3: 4-Hop Campaign Profitability & Gross Margin % (GRAPH_TABLE)
 Duration: 8
 
 Attributed revenue alone doesn't tell us if campaigns are profitable. By traversing 4 hops from touchpoint to product catalog, we deduct product COGS to compute True Gross Profit:
@@ -520,41 +555,6 @@ ORDER BY gross_profit DESC;
 | `Organic_Search_SEO` | Organic | \$409,566.57 | \$196,346.08 | **\$213,220.49** | 52.06% |
 | `Q4_Meta_IG_Retargeting` | Paid Social | \$401,409.26 | \$193,276.98 | **\$208,132.28** | 51.85% |
 | `Q4_TikTok_Prospecting_GenZ` | Paid Social | \$399,775.09 | \$192,436.82 | **\$207,338.27** | 51.86% |
-
----
-
-## 9. Use Case 3: Multi-Grain Reporting with GRAPH_EXPAND & Measures
-Duration: 8
-
-Using `GRAPH_EXPAND` with declared `MEASURE`s and `AGG()`, we project macro budgets and micro interaction volumes in a single query without Cartesian explosion:
-
-```sql
-SELECT
-  campaigns_channel AS channel,
-  campaigns_campaign_name AS campaign_name,
-  AGG(campaigns_total_campaign_budget) AS total_budget,
-  AGG(touchpoints_total_clicks) AS total_clicks,
-  AGG(touchpoints_unique_reach) AS unique_reach,
-  ROUND(AGG(touchpoints_total_ad_spend), 2) AS total_ad_spend,
-  ROUND(AGG(campaigns_total_campaign_budget) - AGG(touchpoints_total_ad_spend), 2) AS remaining_budget,
-  ROUND(AGG(touchpoints_total_ad_spend) / NULLIF(AGG(touchpoints_total_clicks), 0), 2) AS effective_avg_cpc
-FROM GRAPH_EXPAND("thelook_graph.eCommerce_Integrated", start_node => "touchpoints")
-GROUP BY channel, campaign_name
-ORDER BY total_ad_spend DESC;
-```
-
-### Query Output
-
-| channel | campaign_name | total_budget | total_clicks | unique_reach | total_ad_spend | remaining_budget | effective_avg_cpc |
-| :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- |
-| **Paid Search** | `Q4_Search_Generic_Audio` | \$1,500,000 | 362,497 | 39,564 | \$1,370,238.66 | \$129,761.34 | **\$3.78** |
-| **Paid Search** | `Q4_Search_Brand_Electronics` | \$1,100,000 | 362,605 | 39,564 | \$957,277.20 | \$142,722.80 | **\$2.64** |
-| **Paid Social** | `Q4_Meta_IG_Retargeting` | \$250,000 | 120,597 | 16,039 | \$223,104.45 | \$26,895.55 | **\$1.85** |
-| **Video** | `Q4_YouTube_Video_Awareness` | \$220,000 | 241,729 | 16,114 | \$205,469.65 | \$14,530.35 | **\$0.85** |
-| **Paid Social** | `Q4_TikTok_Prospecting_GenZ` | \$150,000 | 120,740 | 16,039 | \$119,532.60 | \$30,467.40 | **\$0.99** |
-| **Email Marketing** | `Q4_Email_Cart_Abandonment` | \$75,000 | 546,038 | 52,216 | \$65,524.56 | \$9,475.44 | **\$0.12** |
-| **Email Marketing** | `Q4_Email_VIP_Weekly_Drop` | \$60,000 | 545,691 | 52,216 | \$54,569.10 | \$5,430.90 | **\$0.10** |
-| **Organic** | `Organic_Search_SEO` | \$25,000 | 121,058 | 8,550 | \$0.00 | \$25,000.00 | **\$0.00** |
 
 ---
 

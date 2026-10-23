@@ -1,5 +1,5 @@
 -- ============================================================================
--- Step 8: Use Case 2 - Campaign Profit Contribution & Gross Margin Analysis
+-- Step 9: Use Case 3 - Campaign Profit Contribution & Gross Margin Analysis
 -- Graph: thelook_graph.eCommerce_Integrated
 -- Operator: GRAPH_TABLE (4-Hop Traversal: Touchpoint -> Order -> OrderItem -> Product)
 -- Scenario: Connect marketing touchpoints all the way through to product COGS
