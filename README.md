@@ -1,16 +1,16 @@
 # Marketing Attribution with BigQuery Graph & Measures
 
-> **Google Developers Codelab**: Build a multi-touch Marketing Attribution and ROAS Graph using BigQuery Graph (ISO GQL, Semantic Measures, and `GRAPH_EXPAND`), and query it conversationally using a Conversational Analytics Data Agent deployed from BigQuery Studio to Gemini Enterprise.
+> **Google Developers Codelab**: Build a zero-copy multi-touch Marketing Attribution and ROAS Graph using BigQuery Graph (ISO GQL, Semantic Measures, and `GRAPH_EXPAND`) on `bigquery-public-data.thelook_ecommerce` (backed by `gs://sample-data-and-media/thelook_dataset_snapshot/`), and query it conversationally using a Conversational Analytics Data Agent deployed from BigQuery Studio to Gemini Enterprise.
 
 ---
 
 ## 📖 Codelab Overview
 
-- **Codelab File**: [`codelab.md`](./codelab.md)
-- **Interactive HTML Preview**: [`index.html`](./index.html)
-- **SQL Scripts**: [`sql/`](./sql/)
-- **Grounded Property Graph**:
-  - `eRetail_marketing.eCommerce_Integrated`: Master 6-entity unified enterprise property graph with semantic measures, powering both `GRAPH_EXPAND` (via `start_node => "touchpoints"`) and multi-hop network traversals (`GRAPH_TABLE` and ISO GQL).
+- **Codelab Source**: [`codelab.md`](./codelab.md)
+- **Interactive HTML App**: [`index.html`](./index.html)
+- **Production SQL Scripts**: [`sql/`](./sql/)
+- **Unified Property Graph**:
+  - `thelook_graph.eCommerce_Integrated`: Master 6-entity unified enterprise property graph with 9 declared semantic measures, powering multi-grain reporting (`GRAPH_EXPAND` via `start_node => "events"` and `start_node => "order_items"`), path traversals (`GRAPH_TABLE`), and pure ISO GQL journey mapping.
 - **Gemini Enterprise Agent Specs**: [`agent/`](./agent/)
   - Agent Name: `Marketing-Attribution-Agent`
   - Setup Guide: [`agent/gemini_enterprise_setup.md`](./agent/gemini_enterprise_setup.md)
@@ -18,58 +18,67 @@
 
 ---
 
+## 🏛️ Architectural Highlights
+
+1. **Zero-Copy Public Data Integration**:
+   - `CREATE PROPERTY GRAPH` directly links Google Cloud's public dataset (`bigquery-public-data.thelook_ecommerce.*`) as node tables (`users`, `events`, `orders`, `order_items`, `products`).
+   - Requires **zero data copying or approval delays**—users only maintain a lightweight local dataset (`thelook_graph`) for a 5-row reference view (`marketing_channels`) and an attribution edge table (`edge_influenced`).
+2. **Elimination of the 432,247x Cartesian Fan-Out**:
+   - Upstream variables (coarse grains like `weekly_budget` at 1 row per channel) inflate catastrophically when joined to downstream leaf-level events and order items (e.g., Email's $10,000 budget erroneously explodes to **$4,322,470,000** in relational joins).
+   - Solved via **Semantic Measures** in `GRAPH_EXPAND` (safe aggregation at source grain) and mathematically normalized attribution weights ($\sum w_i = 1.0$) in `GRAPH_TABLE`.
+3. **Architectural Decision Guide**:
+   - Clear guidelines on when to use plain SQL `SUM()`, relational `JOIN`s, `GRAPH_TABLE()`, and `GRAPH_EXPAND()`.
+
+---
+
 ## 🚀 Repository Structure
 
 ```
 .
-├── README.md                           # Quickstart guide & repository index
-├── codelab.md                          # Google Codelab source (claat-compatible)
-├── index.html                          # Self-contained interactive Google Codelab Web App
-├── data/                               # Sample dataset CSVs (506 KB)
-│   ├── campaigns.csv                   # 8 Marketing ad campaigns
-│   ├── customers.csv                   # 1,000 Customers
-│   ├── edge_influenced.csv             # 1,728 Multi-touch attribution links
-│   ├── order_items.csv                 # 1,544 Line items
-│   ├── orders.csv                      # 800 Orders
-│   ├── products.csv                    # 8 Products
-│   └── touchpoints.csv                 # 5,000 Marketing touchpoints
+├── README.md                                  # Quickstart guide & repository index
+├── codelab.md                                 # Google Codelab source (claat-compatible)
+├── index.html                                 # Self-contained interactive Codelab Web App (Light Mode)
 ├── sql/
-│   ├── 01_setup_schema.sql             # BigQuery schema & table definitions
-│   ├── 02_load_sample_data.sql         # Seed data loader (LOAD DATA from public GCS or data/)
-│   ├── 03_create_property_graph.sql    # Unified Property Graph DDL (eCommerce_Integrated with MEASUREs)
-│   ├── 04_use_case_graph_expand_spend.sql# Use Case 1: Campaign budget vs. ad spend rollup (GRAPH_EXPAND + start_node)
-│   ├── 05_use_case_customer_journey.sql# Use Case 2: Customer journey traversal (Pure ISO GQL)
-│   ├── 06_use_case_roas_analysis.sql   # Use Case 3: GRAPH_TABLE ROAS & Gross Profitability query
-│   ├── 07_use_case_product_influence.sql# Use Case 4: Product-level campaign influence query
-│   └── 08_use_case_combined_roas_scorecard.sql # Use Case 5: Unified Executive ROAS Scorecard (Dual Views on Single Graph)
+│   ├── 01_setup_schema_and_graph.sql          # Dataset, view, edge table, & Property Graph DDL (9 MEASUREs)
+│   ├── 02_measure_introspection.sql           # INFORMATION_SCHEMA.PROPERTY_GRAPHS introspection
+│   ├── 03_cartesian_fanout_benchmark.sql      # Cartesian explosion benchmark (Relational JOIN vs. Graph)
+│   ├── 04_use_case_multi_touch_attribution.sql# Multi-touch attribution (First, Last, & Linear touch)
+│   ├── 05_use_case_channel_profitability.sql  # 4-hop profitability & Gross Margin % traversal
+│   ├── 06_use_case_graph_expand.sql           # Multi-grain reporting with GRAPH_EXPAND and AGG()
+│   ├── 07_use_case_customer_journey.sql       # Pure ISO GQL customer journey traversal & TO_JSON()
+│   ├── 08_use_case_combined_roas_scorecard.sql# Unified ROAS Scorecard (GRAPH_EXPAND + GRAPH_TABLE CTE)
+│   └── 09_plain_sql_vs_graph_guide.sql        # Decision guide: SUM() vs. Relational JOIN vs. Graph
 └── agent/
-    ├── agent_card.json                 # Agent Card specification
-    ├── gemini_enterprise_setup.md      # Gemini Enterprise registration walkthrough
-    └── sample_conversations.md         # Conversational Analytics interactions & trajectories
+    ├── agent_card.json                        # Conversational Analytics Agent Card specification
+    ├── gemini_enterprise_setup.md             # BigQuery Studio to Gemini Enterprise deployment guide
+    └── sample_conversations.md                # Conversational analytics interaction trajectories
 ```
 
 ---
 
-## 🎯 The 5 Core Use Cases
+## 🎯 Verified Codelab Use Cases
 
-1. **Use Case 1: Campaign Budget vs. Ad Spend Rollup** (`eCommerce_Integrated` | `GRAPH_EXPAND` + `AGG()`)
-   - Standard relational SQL rollup for BI tools and executive scorecards extracting the marketing branch via `start_node => "touchpoints"`.
-2. **Use Case 2: Multi-Touch Customer Journey** (`eCommerce_Integrated` | Pure ISO GQL)
-   - Traces cross-channel touchpoint paths and device shifts prior to orders.
-3. **Use Case 3: Net ROAS & Gross Profitability** (`eCommerce_Integrated` | `GRAPH_TABLE`)
-   - Deducts product COGS from attributed net revenue to evaluate actual profit contribution.
-4. **Use Case 4: Product Category Influence** (`eCommerce_Integrated` | `GRAPH_TABLE`)
-   - 5-hop path traversal correlating marketing channels with specific merchandise sales.
-5. **Use Case 5: Unified Executive ROAS Scorecard** (Dual Views on Single Graph CTE Query)
-   - Combines `GRAPH_EXPAND` and `GRAPH_TABLE` on `eCommerce_Integrated` to compute True ROAS on Actual Spend vs. ROAS on Budget.
+| # | Use Case | Query Type | Purpose |
+| :- | :--- | :--- | :--- |
+| **1** | **Measure Introspection** | `INFORMATION_SCHEMA` | Unnest declared measures dynamically from graph metadata. |
+| **2** | **Cartesian Fan-Out Benchmark** | Relational `JOIN` vs. Graph | Demonstrate the 432,247x upstream budget explosion and graph solution. |
+| **3** | **Multi-Touch Attribution** | `GRAPH_TABLE` | Compare First-Touch, Last-Touch, and Linear attribution across 956K journeys. |
+| **4** | **Channel Profitability** | `GRAPH_TABLE` (4-hop) | Traverse channel $\to$ event $\to$ order $\to$ item $\to$ product to compute Net Margin % (~51.9%). |
+| **5** | **Multi-Grain Graph Rollup** | `GRAPH_EXPAND` + `AGG()` | Roll up events and order items simultaneously without row multiplication. |
+| **6** | **Customer Conversion Journey** | Pure ISO GQL | Trace multi-session browsing journeys for high-intent converted users (e.g., User 65516). |
+| **7** | **Executive ROAS Scorecard** | Dual-View CTE | Combine `GRAPH_EXPAND` (budget) with `GRAPH_TABLE` (profit) for True ROAS. |
+| **8** | **Plain SQL vs. Graph Guide** | Comparative SQL | Step-by-step decision matrix from single-table `SUM()` to `GRAPH_EXPAND`. |
 
 ---
 
 ## 🛠️ Viewing the Interactive Codelab
 
-Open `index.html` directly in any web browser:
+Open `index.html` directly in any modern browser:
+
 ```bash
-google-chrome index.html
-# OR start a local server
+# Start a local web server
 python3 -m http.server 8080
+
+# Navigate to:
+# http://localhost:8080
 ```

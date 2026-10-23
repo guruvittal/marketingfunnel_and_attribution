@@ -293,106 +293,67 @@
       margin-bottom: 8px;
     }
 
-    /* Callout & Alerts */
-    .callout {
-      background: #ffffff;
-      border: 1px solid #dadce0;
-      border-left: 4px solid var(--google-blue);
-      border-radius: 0 8px 8px 0;
-      padding: 16px 20px;
-      margin: 20px 0;
-      font-size: 0.95rem;
-    }
-
-    .callout.tip {
-      border-left-color: var(--google-green);
-      background: #f6fbf7;
-    }
-
-    .callout.warning {
-      border-left-color: var(--google-yellow);
-      background: #fefcf5;
-    }
-
-    .milestone-callout {
-      background: #fffdf5;
-      border: 1px solid #fde293;
-      border-left: 4px solid #f9ab00;
-      border-radius: 0 8px 8px 0;
-      padding: 16px 20px;
-      margin: 20px 0;
-      font-size: 0.95rem;
-    }
-
-    .milestone-callout .milestone-title {
-      font-weight: 700;
-      color: #b06000;
-      display: flex;
-      align-items: center;
-      gap: 6px;
-      margin-bottom: 6px;
-      font-size: 1rem;
+    code {
+      font-family: 'Roboto Mono', monospace;
+      font-size: 0.9em;
+      background: #f1f3f4;
+      padding: 2px 6px;
+      border-radius: 4px;
+      color: #d93025;
     }
 
     /* Code Blocks */
     .code-container {
       position: relative;
-      margin: 18px 0 24px;
+      margin: 20px 0;
+      background: #282c34;
       border-radius: 8px;
       overflow: hidden;
-      background: var(--code-bg);
-      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
     }
 
     .code-header {
       display: flex;
-      justify-content: space-between;
       align-items: center;
+      justify-content: space-between;
       padding: 8px 16px;
       background: #21252b;
       color: #abb2bf;
       font-size: 0.8rem;
       font-family: 'Roboto Mono', monospace;
-      border-bottom: 1px solid rgba(255,255,255,0.08);
+      border-bottom: 1px solid #181a1f;
     }
 
     .copy-btn {
-      background: rgba(255,255,255,0.1);
+      background: #3a3f4b;
       border: none;
       color: #ffffff;
       padding: 4px 10px;
       border-radius: 4px;
-      font-size: 0.75rem;
       cursor: pointer;
-      display: flex;
-      align-items: center;
-      gap: 4px;
+      font-size: 0.75rem;
+      font-family: 'Roboto Mono', monospace;
       transition: background 0.2s;
     }
 
     .copy-btn:hover {
-      background: rgba(255,255,255,0.25);
+      background: #4b5263;
     }
 
     pre {
       padding: 16px;
       overflow-x: auto;
+      margin: 0;
+    }
+
+    pre code {
       font-family: 'Roboto Mono', monospace;
-      font-size: 0.88rem;
-      color: #abb2bf;
+      font-size: 0.85rem;
       line-height: 1.5;
-    }
-
-    code {
-      font-family: 'Roboto Mono', monospace;
-    }
-
-    p code, li code {
-      background: #f1f3f4;
-      color: #c5221f;
-      padding: 2px 6px;
-      border-radius: 4px;
-      font-size: 0.9em;
+      color: #abb2bf;
+      background: transparent;
+      padding: 0;
+      border-radius: 0;
     }
 
     /* Tables */
@@ -437,70 +398,120 @@
       border-radius: 8px;
       padding: 16px 20px;
       font-family: 'Roboto Mono', monospace;
-      font-size: 0.82rem;
-      line-height: 1.45;
+      font-size: 0.85rem;
+      line-height: 1.4;
+      white-space: pre;
       overflow-x: auto;
-      margin: 18px 0;
+      margin: 20px 0;
       color: #202124;
     }
 
-    /* Footer Nav Buttons */
-    .content-footer {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      margin-top: 48px;
-      padding-top: 24px;
-      border-top: 1px solid var(--border-gray);
+    /* Milestone Callout Box */
+    .milestone-callout {
+      background: #fffdf5;
+      border: 1px solid #fde293;
+      border-left: 4px solid #f9ab00;
+      border-radius: 0 8px 8px 0;
+      padding: 16px 20px;
+      margin: 20px 0;
+      font-size: 0.95rem;
     }
 
-    .btn-nav {
-      background: var(--google-blue);
-      color: #ffffff;
-      border: none;
-      padding: 10px 24px;
+    .milestone-callout .milestone-title {
+      font-weight: 700;
+      color: #b06000;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 8px;
+      font-size: 1.05rem;
+    }
+
+    /* Callouts */
+    .callout {
+      background: #ffffff;
+      border: 1px solid #dadce0;
+      border-left: 4px solid var(--google-blue);
+      border-radius: 0 8px 8px 0;
+      padding: 16px 20px;
+      margin: 20px 0;
+      font-size: 0.95rem;
+    }
+
+    .callout.tip {
+      border-left-color: var(--google-green);
+      background: #f6fbf7;
+    }
+
+    .callout.warning {
+      border-left-color: var(--google-yellow);
+      background: #fefcf5;
+    }
+
+    /* Bottom Navigation Bar */
+    footer.bottom-nav {
+      position: fixed;
+      bottom: 0;
+      left: var(--sidebar-width);
+      right: 0;
+      height: 64px;
+      background: #ffffff;
+      border-top: 1px solid var(--border-gray);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 32px;
+      z-index: 900;
+    }
+
+    .nav-btn {
+      padding: 8px 24px;
       border-radius: 4px;
       font-family: 'Google Sans', sans-serif;
-      font-weight: 500;
       font-size: 0.9rem;
+      font-weight: 500;
       cursor: pointer;
       display: flex;
       align-items: center;
       gap: 8px;
-      transition: background 0.2s, transform 0.1s;
+      transition: background 0.2s, box-shadow 0.2s;
     }
 
-    .btn-nav:hover {
-      background: var(--google-blue-hover);
-    }
-
-    .btn-nav:active {
-      transform: scale(0.98);
-    }
-
-    .btn-nav.secondary {
-      background: transparent;
+    .btn-prev {
+      background: #ffffff;
       color: var(--google-blue);
       border: 1px solid var(--border-gray);
     }
 
-    .btn-nav.secondary:hover {
+    .btn-prev:hover:not(:disabled) {
       background: var(--bg-gray);
     }
 
-    .btn-nav:disabled {
-      opacity: 0.4;
+    .btn-prev:disabled {
+      color: #dadce0;
+      border-color: #dadce0;
       cursor: not-allowed;
     }
 
-    /* Progress bar */
+    .btn-next {
+      background: var(--google-blue);
+      color: #ffffff;
+      border: none;
+    }
+
+    .btn-next:hover {
+      background: var(--google-blue-hover);
+      box-shadow: 0 1px 3px rgba(0,0,0,0.2);
+    }
+
+    /* Progress bar indicator */
     .progress-bar-container {
-      height: 4px;
-      background: #e0e0e0;
+      position: absolute;
+      top: 0;
+      left: 0;
       width: 100%;
-      position: sticky;
-      top: var(--header-height);
-      z-index: 999;
+      height: 4px;
+      background: #e8eaed;
     }
 
     .progress-bar-fill {
@@ -509,103 +520,35 @@
       width: 7.14%;
       transition: width 0.3s ease;
     }
-
-    .chat-simulation {
-      border: 1px solid var(--border-gray);
-      border-radius: 8px;
-      background: #ffffff;
-      margin: 20px 0;
-      overflow: hidden;
-    }
-
-    .chat-header {
-      background: #f8f9fa;
-      padding: 12px 16px;
-      border-bottom: 1px solid var(--border-gray);
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-    }
-
-    .chat-title {
-      font-weight: 500;
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      color: var(--google-blue);
-    }
-
-    .chat-body {
-      padding: 16px;
-      display: flex;
-      flex-direction: column;
-      gap: 12px;
-      background: #ffffff;
-    }
-
-    .chat-msg {
-      max-width: 80%;
-      padding: 10px 14px;
-      border-radius: 8px;
-      font-size: 0.9rem;
-      line-height: 1.5;
-    }
-
-    .msg-user {
-      align-self: flex-end;
-      background: var(--google-blue);
-      color: #ffffff;
-    }
-
-    .msg-agent {
-      align-self: flex-start;
-      background: #f1f3f4;
-      color: var(--text-dark);
-      border: 1px solid #dadce0;
-    }
-
-    @media (max-width: 900px) {
-      aside.sidebar {
-        display: none;
-      }
-      main.content-area {
-        padding: 24px 20px;
-      }
-    }
   </style>
 </head>
 <body>
 
-  <!-- Google Developers Header -->
+  <!-- Top Progress Bar -->
+  <div class="progress-bar-container">
+    <div class="progress-bar-fill" id="progressFill"></div>
+  </div>
+
+  <!-- Header -->
   <header class="devsite-header">
     <div class="header-left">
       <a href="#" class="logo-container">
-        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <path d="M19.35 10.04C18.67 6.59 15.64 4 12 4 9.11 4 6.6 5.64 5.35 8.04 2.34 8.36 0 10.91 0 14c0 3.31 2.69 6 6 6h13c2.76 0 5-2.24 5-5 0-2.64-2.05-4.78-4.65-4.96z" fill="#4285F4"/>
-        </svg>
-        <span>Google Codelabs</span>
-        <span class="logo-badge">BIGQUERY GRAPH</span>
+        <span class="material-symbols-outlined" style="color: var(--google-blue); font-size: 28px;">account_tree</span>
+        <span>Google Cloud Codelabs</span>
+        <span class="logo-badge">ENTERPRISE</span>
       </a>
-      <span class="header-title-divider">|</span>
+      <span class="header-title-divider">/</span>
       <span class="codelab-nav-title" id="headerCurrentTitle">1. Introduction</span>
     </div>
     <div class="header-right">
-      <button class="btn-icon" title="Reset Progress" onclick="goToStep(0)">
-        <span class="material-symbols-outlined">restart_alt</span>
-      </button>
-      <a href="https://github.com/GoogleCloudPlatform" target="_blank" class="btn-icon" title="View Source">
+      <a href="https://github.com/GoogleCloudPlatform" target="_blank" class="btn-icon" title="View Source on GitHub">
         <span class="material-symbols-outlined">code</span>
       </a>
     </div>
   </header>
 
-  <!-- Progress Bar -->
-  <div class="progress-bar-container">
-    <div class="progress-bar-fill" id="progressFill"></div>
-  </div>
-
   <div class="app-container">
-    <!-- Sidebar Navigation -->
+    <!-- Sidebar -->
     <aside class="sidebar">
       <div class="sidebar-header">
         <div class="sidebar-meta-title">Marketing Attribution with BigQuery Graph & Measures</div>
@@ -639,14 +582,14 @@
         <li class="step-item" onclick="goToStep(3)">
           <div class="step-label">
             <span class="step-number">4</span>
-            <span>Loading Sample Data</span>
+            <span>Verifying Public & Reference Data</span>
           </div>
           <span class="step-duration">5 min</span>
         </li>
         <li class="step-item" onclick="goToStep(4)">
           <div class="step-label">
             <span class="step-number">5</span>
-            <span>Defining Property Graphs</span>
+            <span>Defining Property Graph & Measures</span>
           </div>
           <span class="step-duration">10 min</span>
         </li>
@@ -655,7 +598,7 @@
             <span class="step-number">6</span>
             <span>Inspecting Graph & Measures</span>
           </div>
-          <span class="step-duration">5 min</span>
+          <span class="step-duration">8 min</span>
         </li>
         <li class="step-item" onclick="goToStep(6)">
           <div class="step-label">
@@ -667,7 +610,7 @@
         <li class="step-item" onclick="goToStep(7)">
           <div class="step-label">
             <span class="step-number">8</span>
-            <span>Use Case 2: Customer Journey</span>
+            <span>Use Case 2: Multi-Touch Attribution</span>
           </div>
           <span class="step-duration">5 min</span>
         </li>
@@ -681,7 +624,7 @@
         <li class="step-item" onclick="goToStep(9)">
           <div class="step-label">
             <span class="step-number">10</span>
-            <span>Use Case 4: Product Influence</span>
+            <span>Use Case 4: Category & Customer Journey</span>
           </div>
           <span class="step-duration">5 min</span>
         </li>
@@ -716,481 +659,373 @@
       </ul>
     </aside>
 
-    <!-- Content Area -->
+    <!-- Main Content Area -->
     <main class="content-area">
 
-      <!-- Step 0: Introduction -->
+      <!-- STEP 0 -->
       <section class="step-content active" id="step-0">
         <h1 class="step-main-title">1. Introduction</h1>
-        <p>In this codelab, you will learn how to leverage <strong>BigQuery Graph</strong> and <strong>Gemini Enterprise Conversational Analytics</strong> to solve modern marketing attribution and Return on Ad Spend (ROAS) challenges.</p>
+        <p>Measuring marketing return on ad spend (ROAS) and multi-touch customer attribution across modern e-commerce channels is notoriously difficult. Customer journeys are non-linear: a shopper might discover a brand through an Adwords search ad, browse products from an email newsletter, get retargeted on Facebook, and finally convert after clicking a YouTube video.</p>
 
-        <p>In retail and e-commerce, customer purchase paths are highly non-linear. A buyer might discover a product via TikTok, reconsider through Instagram Retargeting, search on Google, and finally complete checkout after receiving an abandoned cart email. Traditional relational data warehouses struggle with such multi-hop queries, requiring 6-way joins that are difficult to write and suffer from severe Cartesian join inflation.</p>
+        <h3>Traditional Relational vs. BigQuery Graph</h3>
+        <p>In traditional relational databases (like standard SQL data warehouses), modeling customer attribution requires joining disparate tables with varying cardinalities (Campaigns ➔ Events ➔ Orders ➔ Line Items ➔ Products). This leads to two critical problems:</p>
+        <ol>
+          <li><strong>The Cartesian Join Explosion (Double Counting):</strong> Joining upstream marketing budgets (1 row per channel) to downstream order line items (hundreds of thousands of rows) multiplies the budget by the number of downstream rows. An email budget of <strong>$10,000</strong> balloons into <strong>$4.32 Billion</strong>!</li>
+          <li><strong>Complex, Fragile SQL:</strong> Multi-hop path analysis requires deeply nested CTEs, recursive queries, or heavy dimensional preprocessing pipelines that duplicate storage and introduce synchronization latency.</li>
+        </ol>
 
-        <div style="text-align: center; margin: 24px 0;">
-          <img src="img/marketing_funnel_graph_infographic.png" alt="BigQuery Marketing Attribution Funnel & Graph Architecture" style="max-width: 100%; height: auto; border-radius: 8px; box-shadow: 0 4px 12px rgba(0,0,0,0.08); border: 1px solid #dadce0;">
-          <p style="font-size: 13px; color: #5f6368; margin-top: 8px;"><strong>Figure 1:</strong> Unified BigQuery Marketing Attribution Graph Architecture & Full-Funnel Metric Flow.</p>
+        <p><strong>Google Cloud BigQuery</strong> introduces two revolutionary capabilities to solve this natively:</p>
+        <ul>
+          <li><strong>BigQuery Property Graph:</strong> Allows you to define graph models (nodes and edges) directly over existing BigQuery tables without moving, transforming, or duplicating data (<strong>Zero-Copy Architecture</strong>). You can query graph paths using ISO/IEC GQL (Graph Query Language) syntax and GoogleSQL's <code>GRAPH_TABLE</code> operator.</li>
+          <li><strong>Semantic Measures (<code>MEASURE(...)</code>):</strong> Embeds business aggregation formulas directly into graph nodes. Combined with the <strong><code>GRAPH_EXPAND</code></strong> table-valued function, BigQuery automatically evaluates metrics at their correct entity grain, completely eliminating the Cartesian join explosion!</li>
+        </ul>
+
+        <div class="callout tip">
+          <strong>Pre-Approved Public Dataset:</strong> In this codelab, we use Google's official, pre-approved public dataset <code>bigquery-public-data.thelook_ecommerce</code> (backed by Cloud Storage snapshot <code>gs://sample-data-and-media/thelook_dataset_snapshot/</code>). This eliminates any data approval roadblocks, requires zero custom CSV downloads, and works out of the box in your Google Cloud project.
         </div>
 
-        <p>With <strong>BigQuery Graph</strong>, we model these relationships natively without data copying using a single, unified enterprise property graph:</p>
-        <ul style="margin-left: 20px; margin-bottom: 24px;">
-          <li><strong><code>eCommerce_Integrated</code>:</strong> The master 6-entity unified property graph spanning Marketing Campaigns, Touchpoints, Customers, Orders, Line Items, and Products with pre-aggregated semantic measures.</li>
-        </ul>
-        <p>By leveraging BigQuery's <code>start_node</code> parameter in <code>GRAPH_EXPAND</code>, this single graph powers both:</p>
-        <ul style="margin-left: 20px; margin-bottom: 24px;">
-          <li><strong>Dimensional BI Rollups:</strong> <code>GRAPH_EXPAND(..., start_node => "touchpoints")</code> and <code>AGG()</code> for fast relational SQL rollups compatible with Looker, Tableau, and PowerBI.</li>
-          <li><strong>Deep Network Traversals:</strong> <code>GRAPH_TABLE</code> and pure ISO GQL for multi-hop customer journeys, net profit ROAS, and merchandise influence.</li>
-        </ul>
-
         <h2>🎯 Core Learning Objectives & Milestones</h2>
-        <ol style="margin-left: 20px; margin-bottom: 24px;">
-          <li><strong>Unified Property Graph Modeling:</strong> Construct the 6-entity master graph <code>eCommerce_Integrated</code> directly over BigQuery tables without data duplication or maintaining separate siloed graphs.</li>
-          <li><strong>Semantic Measures (<code>MEASURE(...)</code>):</strong> Embed standardized pre-aggregated metrics (<code>total_campaign_budget</code>, <code>total_ad_spend</code>, <code>gross_revenue</code>, <code>total_cogs</code>, <code>total_reach</code>) directly into Node tables to <strong>eliminate Cartesian join double-counting</strong>.</li>
-          <li><strong>Dimensional BI Rollups with <code>GRAPH_EXPAND</code>:</strong> Use <code>GRAPH_EXPAND(..., start_node => "touchpoints")</code> and <code>AGG()</code> to safely roll up campaign spend and budgets using standard SQL syntax.</li>
-          <li><strong>Multi-Hop Traversals with <code>GRAPH_TABLE</code> & ISO GQL:</strong> Run native ISO GQL pattern matches to trace multi-touch customer journeys and calculate profit-adjusted ROAS.</li>
-          <li><strong>Unified Single-Graph Dual Paradigm & AI Copilot:</strong> Fuse <code>GRAPH_EXPAND</code> and <code>GRAPH_TABLE</code> on the same single graph in a single GoogleSQL CTE query, then deploy a Conversational Analytics Data Agent to Gemini Enterprise.</li>
-        </ol>
+        <div class="milestone-callout">
+          <div class="milestone-title">
+            <span class="material-symbols-outlined" style="color: #f9ab00;">verified</span>
+            End-to-End Enterprise Attribution Architecture
+          </div>
+          <ol>
+            <li><strong>Deploy Zero-Copy Property Graph Modeling:</strong> Create a unified enterprise property graph (<code>eCommerce_Integrated</code>) mapping directly over Google's public e-commerce tables.</li>
+            <li><strong>Eliminate Cartesian Fan-Out:</strong> Contrast naive relational SQL joins (which multiply budgets by 432,000x) with BigQuery declared <code>MEASURE</code>s and <code>GRAPH_EXPAND</code>.</li>
+            <li><strong>Multi-Touch Marketing Attribution:</strong> Compare First-Touch, Last-Touch, and Linear Attribution models using <code>GRAPH_TABLE</code>.</li>
+            <li><strong>End-to-End Profitability & Gross Margin:</strong> Trace multi-hop conversions through to the product catalog to evaluate true Gross Margin by marketing channel.</li>
+            <li><strong>Unified Executive Scorecard:</strong> Fuse <code>GRAPH_EXPAND</code> (safe budget rollups) and <code>GRAPH_TABLE</code> (profit attribution) on the same graph in a single query.</li>
+            <li><strong>Ground AI Agents in Gemini Enterprise:</strong> Ground a Conversational Analytics Data Agent in BigQuery Studio with declared graph measures.</li>
+          </ol>
+        </div>
 
         <h2>What you'll need</h2>
         <ul>
-          <li>A Google Cloud Project with billing enabled.</li>
-          <li>Access to <strong>Google Cloud Shell</strong> or <strong>BigQuery Studio</strong>.</li>
-          <li>Access to <strong>Gemini Enterprise</strong>.</li>
+          <li>A Google Cloud project with billing enabled.</li>
+          <li>A modern web browser (Google Chrome recommended).</li>
+          <li>Basic knowledge of SQL.</li>
         </ul>
 
         <h2>Cost Estimate</h2>
-        <p>This codelab uses BigQuery Enterprise autoscaling edition (0 baseline slots, scaled up on demand during query execution). Total lab costs are estimated to be <strong>less than $5 USD</strong>.</p>
+        <p>This codelab uses BigQuery Enterprise Edition features (Property Graph and Measures). Running this tutorial costs less than <strong>$1.00 USD</strong> in BigQuery compute when using autoscaling slots and cleaning up the reservation immediately after completion.</p>
       </section>
 
-      <!-- Step 1: Setup and Requirements -->
+      <!-- STEP 1 -->
       <section class="step-content" id="step-1">
         <h1 class="step-main-title">2. Setup and Requirements</h1>
-        <p>In this step, you will configure your Cloud Shell environment and create an autoscaling BigQuery Enterprise reservation.</p>
+        <p>In this step, you will configure your environment in Cloud Shell and create the necessary BigQuery Enterprise reservation.</p>
 
         <h2>Set up Environment Variables</h2>
+        <p>Open Cloud Shell and set your environment variables:</p>
+
         <div class="code-container">
           <div class="code-header">
-            <span>bash</span>
+            <span>BASH</span>
             <button class="copy-btn" onclick="copyCode(this)">Copy</button>
           </div>
           <pre><code>export PROJECT_ID=$(gcloud config get-value project)
 export REGION="US"
-export RESERVATION_NAME="marketing-graph-reservation"
+export RESERVATION_NAME="graph-attribution-res"
+export DATASET="thelook_graph"
 
-echo "Project ID: ${PROJECT_ID}"</code></pre>
+echo "Project ID: ${PROJECT_ID}"
+echo "Region:     ${REGION}"</code></pre>
         </div>
 
         <h2>Enable Required Google Cloud APIs</h2>
         <div class="code-container">
           <div class="code-header">
-            <span>bash</span>
+            <span>BASH</span>
             <button class="copy-btn" onclick="copyCode(this)">Copy</button>
           </div>
-          <pre><code>gcloud services enable \
-  bigquery.googleapis.com \
-  bigqueryreservation.googleapis.com \
-  discoveryengine.googleapis.com</code></pre>
+          <pre><code>gcloud services enable   bigquery.googleapis.com   bigqueryreservation.googleapis.com   --project=${PROJECT_ID}</code></pre>
         </div>
 
         <h2>Create BigQuery Enterprise Reservation & Assignment</h2>
-        <p>BigQuery Graph features using ISO GQL (<code>GRAPH ... MATCH</code> and <code>GRAPH_TABLE</code>) require an <strong>Enterprise</strong> or <strong>Enterprise Plus</strong> reservation. Configure a serverless autoscaling reservation with <strong>0 baseline slots</strong> so compute costs remain zero when idle:</p>
+        <p>BigQuery Property Graph and Semantic Measures are Enterprise Edition features. Create a lightweight reservation with 0 baseline slots and up to 100 autoscaling slots:</p>
 
         <div class="code-container">
           <div class="code-header">
-            <span>bash</span>
+            <span>BASH</span>
             <button class="copy-btn" onclick="copyCode(this)">Copy</button>
           </div>
           <pre><code># 1. Create BigQuery Enterprise reservation (0 baseline, 100 max autoscaling slots)
-bq mk --reservation \
-  --project_id=${PROJECT_ID} \
-  --location=${REGION} \
-  --edition=ENTERPRISE \
-  --slots=0 \
-  --autoscale_max_slots=100 \
-  --ignore_idle_slots=true \
-  ${RESERVATION_NAME}
+bq mk --reservation   --project_id=${PROJECT_ID}   --location=${REGION}   --edition=ENTERPRISE   --slots=0   --autoscale_max_slots=100   ${RESERVATION_NAME}
 
-# 2. Assign project to reservation for query execution
-bq mk --reservation_assignment \
-  --project_id=${PROJECT_ID} \
-  --location=${REGION} \
-  --reservation_id=${RESERVATION_NAME} \
-  --job_type=QUERY \
-  --assignee_type=PROJECT \
-  --assignee_id=${PROJECT_ID}</code></pre>
-        </div>
-
-        <div class="callout tip">
-          <strong>Tip:</strong> <code>GRAPH_EXPAND</code> (Step 10) also runs on standard <strong>On-Demand</strong> pricing without requiring an Enterprise reservation!
+# 2. Assign your project to the reservation for query execution
+bq mk --reservation_assignment   --project_id=${PROJECT_ID}   --location=${REGION}   --reservation_name=${RESERVATION_NAME}   --job_type=QUERY   --assignee_id=${PROJECT_ID}   --assignee_type=PROJECT</code></pre>
         </div>
       </section>
 
-      <!-- Step 2: Creating Schema & Tables -->
+      <!-- STEP 2 -->
       <section class="step-content" id="step-2">
         <h1 class="step-main-title">3. Creating Schema & Tables</h1>
-        <p>In this step, you will create the dataset <code>eRetail_marketing</code> and the 7 underlying relational tables representing the marketing and e-commerce ecosystem.</p>
+        <p>In this step, you will set up your graph workspace dataset <code>thelook_graph</code>, create a reference view for marketing channels, and create the pre-calculated attribution edge table.</p>
+
+        <h3>Architecture Diagram</h3>
+        <div class="diagram-box">[channels] &lt;──(attributed_to)── [events] &lt;──(generated_event)── [users]
+                                   │
+                              (influenced)
+                                   ▼
+[products] &lt;──(is_product)── [order_items] ──(belongs_to)──&gt; [orders]</div>
+
+        <div class="callout tip">
+          <strong>Zero-Copy Advantage:</strong> Base e-commerce tables (<code>users</code>, <code>events</code>, <code>orders</code>, <code>order_items</code>, <code>products</code>) reside directly in Google's pre-approved <code>bigquery-public-data.thelook_ecommerce</code>. You only create the reference view <code>marketing_channels</code> and the attribution edge table <code>edge_influenced</code> in your local dataset!
+        </div>
 
         <div class="code-container">
           <div class="code-header">
             <span>SQL</span>
             <button class="copy-btn" onclick="copyCode(this)">Copy</button>
           </div>
-          <pre><code>-- 1. Create Dataset
-CREATE SCHEMA IF NOT EXISTS `eRetail_marketing` OPTIONS(location='US');
-
--- 2. Campaigns Table (Marketing Ad Campaigns)
-CREATE OR REPLACE TABLE `eRetail_marketing.campaigns` (
-  campaign_id STRING,
-  campaign_name STRING,
-  channel STRING,
-  weekly_budget NUMERIC,
-  target_roas FLOAT64
+          <pre><code>-- 1. Create Graph Workspace Dataset
+CREATE SCHEMA IF NOT EXISTS `thelook_graph`
+OPTIONS (
+  location = 'US',
+  description = 'Marketing Attribution & ROAS Graph using thelook_ecommerce'
 );
 
--- 3. Customers Table (E-commerce Shoppers)
-CREATE OR REPLACE TABLE `eRetail_marketing.customers` (
-  customer_id STRING,
-  customer_segment STRING,
-  signup_date DATE
-);
+-- 2. Create Marketing Channels Reference View
+-- Defines top-of-funnel upstream channel parameters: weekly budget, CPC benchmark, and target ROAS
+CREATE OR REPLACE VIEW `thelook_graph.marketing_channels` AS
+SELECT "Adwords" AS channel_name, 50000.0 AS weekly_budget, 1.50 AS default_cpc, 4.0 AS target_roas UNION ALL
+SELECT "Facebook", 30000.0, 1.10, 3.5 UNION ALL
+SELECT "YouTube", 25000.0, 0.85, 3.0 UNION ALL
+SELECT "Email", 10000.0, 0.10, 8.0 UNION ALL
+SELECT "Organic", 5000.0, 0.00, 10.0;
 
--- 4. Touchpoints Table (Marketing Ad Clicks / Impressions)
-CREATE OR REPLACE TABLE `eRetail_marketing.touchpoints` (
-  touchpoint_id STRING,
-  customer_id STRING,
-  campaign_id STRING,
-  touchpoint_timestamp TIMESTAMP,
-  device_type STRING,
-  cpc_cost NUMERIC
-);
-
--- 5. Orders Table (E-commerce Transactions)
-CREATE OR REPLACE TABLE `eRetail_marketing.orders` (
-  order_id STRING,
-  customer_id STRING,
-  order_timestamp TIMESTAMP,
-  order_status STRING,
-  shipping_cost NUMERIC
-);
-
--- 6. Products Table (Merchandise Catalog)
-CREATE OR REPLACE TABLE `eRetail_marketing.products` (
-  product_id STRING,
-  product_name STRING,
-  category STRING,
-  cost_of_goods NUMERIC,
-  retail_price NUMERIC
-);
-
--- 7. Order Items Table (Transaction Line Items)
-CREATE OR REPLACE TABLE `eRetail_marketing.order_items` (
-  order_item_id STRING,
-  order_id STRING,
-  product_id STRING,
-  sale_price NUMERIC,
-  discount_amount NUMERIC,
-  cost_of_goods NUMERIC,
-  refund_amount NUMERIC,
-  item_status STRING
-);
-
--- 8. Influenced Edge Table (Attribution Bridge Table)
-CREATE OR REPLACE TABLE `eRetail_marketing.edge_influenced` (
-  touchpoint_id STRING,
-  order_id STRING,
-  attribution_weight FLOAT64,
-  touchpoint_rank INT64,
-  days_to_convert FLOAT64
-);</code></pre>
+-- 3. Create Attributed Edge Table: edge_influenced
+-- Pre-calculates First-Touch, Last-Touch, and Linear attribution weights over a 30-day window
+CREATE OR REPLACE TABLE `thelook_graph.edge_influenced` AS
+WITH ranked_touchpoints AS (
+  SELECT
+    e.id AS event_id,
+    o.order_id,
+    e.traffic_source,
+    e.created_at AS event_timestamp,
+    o.created_at AS order_timestamp,
+    ROW_NUMBER() OVER (PARTITION BY o.order_id ORDER BY e.created_at ASC) AS touchpoint_asc,
+    ROW_NUMBER() OVER (PARTITION BY o.order_id ORDER BY e.created_at DESC) AS touchpoint_desc,
+    COUNT(*) OVER (PARTITION BY o.order_id) AS total_touchpoints
+  FROM `bigquery-public-data.thelook_ecommerce.orders` o
+  JOIN `bigquery-public-data.thelook_ecommerce.events` e
+    ON o.user_id = e.user_id 
+   AND e.created_at <= o.created_at
+   AND e.created_at >= TIMESTAMP_SUB(o.created_at, INTERVAL 30 DAY)
+  WHERE o.status NOT IN ("Cancelled", "Returned")
+)
+SELECT 
+  event_id,
+  order_id,
+  traffic_source,
+  touchpoint_asc AS touchpoint_rank,
+  total_touchpoints,
+  IF(touchpoint_asc = 1, 1.0, 0.0) AS first_touch_weight,
+  IF(touchpoint_desc = 1, 1.0, 0.0) AS last_touch_weight,
+  ROUND(1.0 / total_touchpoints, 4) AS linear_weight
+FROM ranked_touchpoints;</code></pre>
         </div>
       </section>
 
-      <!-- Step 3: Loading Sample Data -->
+      <!-- STEP 3 -->
       <section class="step-content" id="step-3">
-        <h1 class="step-main-title">4. Loading Sample Data</h1>
-        <p>In this step, you will populate the 7 tables with a realistic retail marketing attribution dataset containing:</p>
-        <ul style="margin-left: 20px; margin-bottom: 20px;">
-          <li><strong>8 Campaigns:</strong> Paid Search, Paid Social, Affiliate Blogs, and Email Marketing.</li>
-          <li><strong>8 Products:</strong> Hardware catalog across Audio, Accessories, and Displays.</li>
-          <li><strong>1,000 Customers:</strong> New, Returning, and High-Value VIP shoppers.</li>
-          <li><strong>5,000 Touchpoints:</strong> Marketing interactions across Mobile, Desktop, and Tablet.</li>
-          <li><strong>800 Orders & 1,544 Order Items:</strong> Realistic e-commerce sales.</li>
-          <li><strong>1,728 Influenced Edges:</strong> Position-based multi-touch attribution connections with weights and days-to-convert.</li>
-        </ul>
+        <h1 class="step-main-title">4. Verifying Public & Reference Data</h1>
+        <p>Because the dataset is pre-approved and publicly accessible in Google Cloud (backed by <code>gs://sample-data-and-media/thelook_dataset_snapshot/</code>), no CSV data loading or bucket creation is needed!</p>
 
-        <h2>How to Load the Sample Data</h2>
-        <p>You can load this sample dataset into BigQuery using any of the following three methods:</p>
+        <h2>Verify Data Access & Row Counts</h2>
+        <p>Run this query in BigQuery Studio to verify table connectivity:</p>
 
-        <h3>Method A: 1-Click in BigQuery Studio (Recommended)</h3>
-        <p>Click the <strong>Copy</strong> button below and paste the SQL directly into a new <strong>BigQuery Studio</strong> query tab, then click <strong>Run</strong>. BigQuery will load all 7 tables in parallel directly from the publicly accessible Google Cloud Storage bucket (<code>gs://marketing_attribution/data/*.csv</code>) without downloading any files locally:</p>
-
-        <div class="code-container">
-          <div class="code-header">
-            <span>SQL - BigQuery LOAD DATA (from Public GCS Bucket)</span>
-            <button class="copy-btn" onclick="copyCode(this)">Copy</button>
-          </div>
-          <pre><code>-- 1. Load Campaigns
-LOAD DATA OVERWRITE `eRetail_marketing.campaigns`
-(
-  campaign_id STRING,
-  campaign_name STRING,
-  channel STRING,
-  weekly_budget NUMERIC,
-  target_roas FLOAT64
-)
-FROM FILES (
-  format = 'CSV',
-  uris = ['gs://marketing_attribution/data/campaigns.csv'],
-  skip_leading_rows = 1
-);
-
--- 2. Load Products Catalog
-LOAD DATA OVERWRITE `eRetail_marketing.products`
-(
-  product_id STRING,
-  product_name STRING,
-  category STRING,
-  cost_of_goods NUMERIC,
-  retail_price NUMERIC
-)
-FROM FILES (
-  format = 'CSV',
-  uris = ['gs://marketing_attribution/data/products.csv'],
-  skip_leading_rows = 1
-);
-
--- 3. Load Customers
-LOAD DATA OVERWRITE `eRetail_marketing.customers`
-(
-  customer_id STRING,
-  first_seen_date DATE,
-  customer_segment STRING
-)
-FROM FILES (
-  format = 'CSV',
-  uris = ['gs://marketing_attribution/data/customers.csv'],
-  skip_leading_rows = 1
-);
-
--- 4. Load Touchpoints (5,000 Ad Clicks & Digital Interactions)
-LOAD DATA OVERWRITE `eRetail_marketing.touchpoints`
-(
-  touchpoint_id STRING,
-  customer_id STRING,
-  campaign_id STRING,
-  touchpoint_timestamp TIMESTAMP,
-  cpc_cost NUMERIC,
-  device_type STRING
-)
-FROM FILES (
-  format = 'CSV',
-  uris = ['gs://marketing_attribution/data/touchpoints.csv'],
-  skip_leading_rows = 1
-);
-
--- 5. Load Orders (E-commerce Transactions)
-LOAD DATA OVERWRITE `eRetail_marketing.orders`
-(
-  order_id STRING,
-  customer_id STRING,
-  order_timestamp TIMESTAMP,
-  order_status STRING,
-  shipping_cost NUMERIC
-)
-FROM FILES (
-  format = 'CSV',
-  uris = ['gs://marketing_attribution/data/orders.csv'],
-  skip_leading_rows = 1
-);
-
--- 6. Load Order Items (Transaction Line Items)
-LOAD DATA OVERWRITE `eRetail_marketing.order_items`
-(
-  order_item_id STRING,
-  order_id STRING,
-  product_id STRING,
-  sale_price NUMERIC,
-  discount_amount NUMERIC,
-  refund_amount NUMERIC,
-  cost_of_goods NUMERIC,
-  item_status STRING
-)
-FROM FILES (
-  format = 'CSV',
-  uris = ['gs://marketing_attribution/data/order_items.csv'],
-  skip_leading_rows = 1
-);
-
--- 7. Load Influenced Edge (Attribution Weights & Conversion Paths)
-LOAD DATA OVERWRITE `eRetail_marketing.edge_influenced`
-(
-  touchpoint_id STRING,
-  order_id STRING,
-  attribution_weight FLOAT64,
-  touchpoint_rank INT64,
-  days_to_convert FLOAT64
-)
-FROM FILES (
-  format = 'CSV',
-  uris = ['gs://marketing_attribution/data/edge_influenced.csv'],
-  skip_leading_rows = 1
-);</code></pre>
-        </div>
-
-        <h3>Method B: Run from Cloud Shell / Terminal</h3>
-        <p>If you cloned the repository or are working in Cloud Shell, you can execute the pre-packaged script <code>sql/02_load_sample_data.sql</code> directly via the <code>bq</code> CLI:</p>
-        <div class="code-container">
-          <div class="code-header">
-            <span>bash</span>
-            <button class="copy-btn" onclick="copyCode(this)">Copy</button>
-          </div>
-          <pre><code>bq query --use_legacy_sql=false < sql/02_load_sample_data.sql</code></pre>
-        </div>
-
-        <h3>Method C: Load from Local CSV Files in <code>data/</code></h3>
-        <p>If you are working in an offline environment, all 7 CSV files are stored locally in the <code>data/</code> folder. You can load them using <code>bq load</code>:</p>
-        <div class="code-container">
-          <div class="code-header">
-            <span>bash</span>
-            <button class="copy-btn" onclick="copyCode(this)">Copy</button>
-          </div>
-          <pre><code>for table in campaigns products customers touchpoints orders order_items edge_influenced; do
-  bq load --source_format=CSV --skip_leading_rows=1 eRetail_marketing.${table} data/${table}.csv
-done</code></pre>
-        </div>
-
-        <h2>Verify Loaded Data</h2>
-        <p>Confirm that all 7 tables have been successfully populated:</p>
         <div class="code-container">
           <div class="code-header">
             <span>SQL</span>
             <button class="copy-btn" onclick="copyCode(this)">Copy</button>
           </div>
-          <pre><code>SELECT table_id, row_count, size_bytes
-FROM `eRetail_marketing.__TABLES__`
-ORDER BY table_id;</code></pre>
+          <pre><code>SELECT 'users' AS table_name, COUNT(*) AS row_count FROM `bigquery-public-data.thelook_ecommerce.users` UNION ALL
+SELECT 'events', COUNT(*) FROM `bigquery-public-data.thelook_ecommerce.events` UNION ALL
+SELECT 'orders', COUNT(*) FROM `bigquery-public-data.thelook_ecommerce.orders` UNION ALL
+SELECT 'order_items', COUNT(*) FROM `bigquery-public-data.thelook_ecommerce.order_items` UNION ALL
+SELECT 'products', COUNT(*) FROM `bigquery-public-data.thelook_ecommerce.products` UNION ALL
+SELECT 'marketing_channels', COUNT(*) FROM `thelook_graph.marketing_channels` UNION ALL
+SELECT 'edge_influenced', COUNT(*) FROM `thelook_graph.edge_influenced`;</code></pre>
         </div>
 
+        <h2>Expected Row Counts</h2>
         <div class="table-container">
           <table>
             <thead>
               <tr>
-                <th>Table ID</th>
+                <th>Table Name</th>
+                <th>Source</th>
                 <th>Row Count</th>
                 <th>Description</th>
               </tr>
             </thead>
             <tbody>
-              <tr><td><code>campaigns</code></td><td><strong>8</strong></td><td>8 Marketing ad campaigns across 4 channels</td></tr>
-              <tr><td><code>products</code></td><td><strong>8</strong></td><td>E-commerce merchandise catalog</td></tr>
-              <tr><td><code>customers</code></td><td><strong>1,000</strong></td><td>Unique shoppers across 3 customer segments</td></tr>
-              <tr><td><code>touchpoints</code></td><td><strong>5,000</strong></td><td>Marketing touches (clicks, impressions)</td></tr>
-              <tr><td><code>orders</code></td><td><strong>800</strong></td><td>Completed customer checkout transactions</td></tr>
-              <tr><td><code>order_items</code></td><td><strong>1,544</strong></td><td>Individual merchandise line items purchased</td></tr>
-              <tr><td><code>edge_influenced</code></td><td><strong>1,728</strong></td><td>Multi-touch attribution links</td></tr>
+              <tr>
+                <td><code>users</code></td>
+                <td><code>bigquery-public-data.thelook_ecommerce</code></td>
+                <td><strong>100,000</strong></td>
+                <td>Registered global shoppers</td>
+              </tr>
+              <tr>
+                <td><code>events</code></td>
+                <td><code>bigquery-public-data.thelook_ecommerce</code></td>
+                <td><strong>~2,431,963</strong></td>
+                <td>Web traffic events & channel touchpoints</td>
+              </tr>
+              <tr>
+                <td><code>orders</code></td>
+                <td><code>bigquery-public-data.thelook_ecommerce</code></td>
+                <td><strong>~125,226</strong></td>
+                <td>E-commerce orders</td>
+              </tr>
+              <tr>
+                <td><code>order_items</code></td>
+                <td><code>bigquery-public-data.thelook_ecommerce</code></td>
+                <td><strong>~181,759</strong></td>
+                <td>Line-item transactions with sale price</td>
+              </tr>
+              <tr>
+                <td><code>products</code></td>
+                <td><code>bigquery-public-data.thelook_ecommerce</code></td>
+                <td><strong>~29,120</strong></td>
+                <td>Product catalog with COGS & retail price</td>
+              </tr>
+              <tr>
+                <td><code>marketing_channels</code></td>
+                <td><code>thelook_graph</code> (View)</td>
+                <td><strong>5</strong></td>
+                <td>Channel budgets & ROAS targets</td>
+              </tr>
+              <tr>
+                <td><code>edge_influenced</code></td>
+                <td><code>thelook_graph</code> (Table)</td>
+                <td><strong>~956,420</strong></td>
+                <td>30-day touchpoint attribution edges</td>
+              </tr>
             </tbody>
           </table>
         </div>
       </section>
 
-      <!-- Step 4: Defining Property Graph & Measures -->
+      <!-- STEP 4 -->
       <section class="step-content" id="step-4">
         <h1 class="step-main-title">5. Defining the Unified Property Graph & Semantic Measures</h1>
-        <p>Rather than duplicating data into external databases or maintaining separate graphs, BigQuery Property Graph maps directly to your physical tables. In this step, we create a single, unified enterprise property graph:</p>
 
         <div class="milestone-callout">
           <div class="milestone-title">
             <span class="material-symbols-outlined" style="color: #f9ab00;">flag</span>
-            🎯 Milestone Checkpoint 1: Unified Enterprise Property Graph Modeling
+            🎯 Milestone Checkpoint 1: Zero-Copy Property Graph Modeling
           </div>
-          <strong>Objective in Action:</strong> 
-          A single property graph <code>eCommerce_Integrated</code> encompasses all 6 tables and 5 edge relationships with pre-aggregated semantic measures. By utilizing <code>start_node => "touchpoints"</code> in <code>GRAPH_EXPAND</code>, we extract the marketing hierarchy on demand, while <code>GRAPH_TABLE</code> and pure ISO GQL traverse the complete multi-hop mesh.
+          <strong>Objective in Action:</strong> Rather than maintaining separate graphs or copying millions of rows, BigQuery Property Graph maps directly to public tables and local views. In this step, we create the single, unified enterprise property graph <code>thelook_graph.eCommerce_Integrated</code>.
         </div>
 
-        <div style="text-align: center; margin: 24px 0;">
-          <img src="img/marketing_funnel_graph_infographic.png" alt="BigQuery Marketing Attribution Funnel & Graph Architecture" style="max-width: 100%; height: auto; border-radius: 8px; box-shadow: 0 4px 12px rgba(0,0,0,0.08); border: 1px solid #dadce0;">
-          <p style="font-size: 13px; color: #5f6368; margin-top: 8px;"><strong>Figure 2:</strong> Unified Enterprise Property Graph Architecture: <code>eCommerce_Integrated</code> enclosing all 6 entities and semantic measures.</p>
-        </div>
-
+        <h2>Create Unified Property Graph DDL</h2>
         <div class="code-container">
           <div class="code-header">
-            <span>SQL - eCommerce_Integrated (Unified Single Graph DDL)</span>
+            <span>SQL</span>
             <button class="copy-btn" onclick="copyCode(this)">Copy</button>
           </div>
-          <pre><code>CREATE OR REPLACE PROPERTY GRAPH `eRetail_marketing.eCommerce_Integrated`
+          <pre><code>CREATE OR REPLACE PROPERTY GRAPH `thelook_graph.eCommerce_Integrated`
 NODE TABLES (
-  `eRetail_marketing.campaigns` AS campaigns
-    KEY (campaign_id)
-    LABEL campaigns PROPERTIES (
-      campaign_id, campaign_name, channel, weekly_budget, target_roas,
-      MEASURE(SUM(weekly_budget)) AS total_campaign_budget
+  -- Users Node Table
+  `bigquery-public-data.thelook_ecommerce.users` AS users
+    KEY (id)
+    LABEL users PROPERTIES (
+      id, first_name, last_name, email, age, gender, country, traffic_source, created_at,
+      MEASURE(COUNT(DISTINCT id)) AS total_users
     ),
-  `eRetail_marketing.touchpoints` AS touchpoints
-    KEY (touchpoint_id)
-    LABEL touchpoints PROPERTIES (
-      touchpoint_id, customer_id, campaign_id, cpc_cost, device_type,
-      MEASURE(SUM(cpc_cost)) AS total_ad_spend,
-      MEASURE(COUNT(touchpoint_id)) AS total_clicks
+
+  -- Events Node Table (Web Traffic & Touchpoint Interactions)
+  `bigquery-public-data.thelook_ecommerce.events` AS events
+    KEY (id)
+    LABEL events PROPERTIES (
+      id, user_id, session_id, created_at, traffic_source, event_type, browser, city, state,
+      MEASURE(COUNT(id)) AS total_events,
+      MEASURE(COUNT(DISTINCT session_id)) AS total_sessions
     ),
-  `eRetail_marketing.customers` AS customers
-    KEY (customer_id)
-    LABEL customers PROPERTIES (
-      customer_id, customer_segment,
-      MEASURE(COUNT(DISTINCT customer_id)) AS total_reach
-    ),
-  `eRetail_marketing.orders` AS orders
+
+  -- Orders Node Table (Commercial Transactions)
+  `bigquery-public-data.thelook_ecommerce.orders` AS orders
     KEY (order_id)
     LABEL orders PROPERTIES (
-      order_id, order_status, shipping_cost,
+      order_id, user_id, status, created_at, num_of_item,
       MEASURE(COUNT(order_id)) AS total_orders
     ),
-  `eRetail_marketing.order_items` AS order_items
-    KEY (order_item_id)
+
+  -- Order Items Node Table (Line-Item Financial Leaf Grain)
+  `bigquery-public-data.thelook_ecommerce.order_items` AS order_items
+    KEY (id)
     LABEL order_items PROPERTIES (
-      order_item_id, product_id, order_id, sale_price, discount_amount, cost_of_goods, refund_amount, item_status,
-      sale_price - discount_amount AS net_revenue,
-      MEASURE(SUM(net_revenue)) AS gross_revenue,
-      MEASURE(SUM(cost_of_goods)) AS total_cogs,
-      MEASURE(SUM(refund_amount)) AS total_refunds
+      id, order_id, user_id, product_id, sale_price, status, created_at,
+      MEASURE(SUM(sale_price)) AS gross_revenue,
+      MEASURE(COUNT(id)) AS total_items_sold
     ),
-  `eRetail_marketing.products` AS products
-    KEY (product_id)
+
+  -- Products Catalog Node Table
+  `bigquery-public-data.thelook_ecommerce.products` AS products
+    KEY (id)
     LABEL products PROPERTIES (
-      product_id, product_name, category, cost_of_goods, retail_price
+      id, cost, category, name, brand, retail_price, department,
+      MEASURE(AVG(cost)) AS avg_cost,
+      MEASURE(AVG(retail_price)) AS avg_retail_price
+    ),
+
+  -- Marketing Channels Node Table (Upstream Budget & Targets)
+  `thelook_graph.marketing_channels` AS channels
+    KEY (channel_name)
+    LABEL channels PROPERTIES (
+      channel_name, weekly_budget, target_roas,
+      MEASURE(SUM(weekly_budget)) AS total_budget
     )
 )
 EDGE TABLES (
-  `eRetail_marketing.touchpoints` AS generated_by
-    KEY (touchpoint_id)
-    SOURCE KEY (touchpoint_id) REFERENCES touchpoints (touchpoint_id)
-    DESTINATION KEY (campaign_id) REFERENCES campaigns (campaign_id)
-    LABEL GENERATED_BY NO PROPERTIES,
-  `eRetail_marketing.touchpoints` AS engaged_with
-    KEY (touchpoint_id)
-    SOURCE KEY (customer_id) REFERENCES customers (customer_id)
-    DESTINATION KEY (touchpoint_id) REFERENCES touchpoints (touchpoint_id)
-    LABEL ENGAGED_WITH NO PROPERTIES,
-  `eRetail_marketing.edge_influenced` AS edge_influenced
-    KEY (touchpoint_id, order_id)
-    SOURCE KEY (touchpoint_id) REFERENCES touchpoints (touchpoint_id)
+  -- Event -> Channel
+  `bigquery-public-data.thelook_ecommerce.events` AS event_channel
+    KEY (id)
+    SOURCE KEY (id) REFERENCES events (id)
+    DESTINATION KEY (traffic_source) REFERENCES channels (channel_name)
+    LABEL ATTRIBUTED_TO NO PROPERTIES,
+
+  -- User -> Event
+  `bigquery-public-data.thelook_ecommerce.events` AS user_event
+    KEY (id)
+    SOURCE KEY (user_id) REFERENCES users (id)
+    DESTINATION KEY (id) REFERENCES events (id)
+    LABEL GENERATED_EVENT NO PROPERTIES,
+
+  -- Event -> Order (Attribution Edge with Weights)
+  `thelook_graph.edge_influenced` AS edge_influenced
+    KEY (event_id, order_id)
+    SOURCE KEY (event_id) REFERENCES events (id)
     DESTINATION KEY (order_id) REFERENCES orders (order_id)
     LABEL INFLUENCED PROPERTIES (
-      attribution_weight, touchpoint_rank, days_to_convert
+      touchpoint_rank, total_touchpoints, first_touch_weight, last_touch_weight, linear_weight
     ),
-  `eRetail_marketing.order_items` AS item_belongs_to_order
-    KEY (order_item_id)
-    SOURCE KEY (order_item_id) REFERENCES order_items (order_item_id)
+
+  -- Order Item -> Order
+  `bigquery-public-data.thelook_ecommerce.order_items` AS item_order
+    KEY (id)
+    SOURCE KEY (id) REFERENCES order_items (id)
     DESTINATION KEY (order_id) REFERENCES orders (order_id)
     LABEL BELONGS_TO NO PROPERTIES,
-  `eRetail_marketing.order_items` AS item_is_product
-    KEY (order_item_id)
-    SOURCE KEY (order_item_id) REFERENCES order_items (order_item_id)
-    DESTINATION KEY (product_id) REFERENCES products (product_id)
+
+  -- Order Item -> Product
+  `bigquery-public-data.thelook_ecommerce.order_items` AS item_product
+    KEY (id)
+    SOURCE KEY (id) REFERENCES order_items (id)
+    DESTINATION KEY (product_id) REFERENCES products (id)
     LABEL IS_PRODUCT NO PROPERTIES
 );</code></pre>
         </div>
+
+        <div class="callout tip">
+          <strong>Schema Cleanliness:</strong> Structural edges (<code>ATTRIBUTED_TO</code>, <code>GENERATED_EVENT</code>, <code>BELONGS_TO</code>, <code>IS_PRODUCT</code>) use <code>NO PROPERTIES</code>. Attribution weights and touchpoint rankings are defined only on <code>INFLUENCED</code>.
+        </div>
       </section>
 
-      <!-- Step 5: Visualizing Graph -->
+      <!-- STEP 5 -->
       <section class="step-content" id="step-5">
         <h1 class="step-main-title">6. Inspecting Graph Schema, Semantic Measures & Paths</h1>
 
@@ -1207,15 +1042,15 @@ EDGE TABLES (
 
         <div class="code-container">
           <div class="code-header">
-            <span>SQL - Inspect Measures in INFORMATION_SCHEMA.PROPERTY_GRAPHS</span>
+            <span>SQL</span>
             <button class="copy-btn" onclick="copyCode(this)">Copy</button>
           </div>
           <pre><code>SELECT
   JSON_VALUE(node_table_json, "$.name") AS node_table_name,
   JSON_VALUE(prop_json, "$.name") AS measure_name,
   JSON_VALUE(prop_json, "$.expression") AS measure_expression,
-  CONCAT("MEASURE&lt;", JSON_VALUE(prop_json, "$.dataType.typeKind"), "&gt;") AS measure_type
-FROM `eRetail_marketing.INFORMATION_SCHEMA.PROPERTY_GRAPHS`,
+  CONCAT("MEASURE<", JSON_VALUE(prop_json, "$.dataType.typeKind"), ">") AS measure_type
+FROM `thelook_graph.INFORMATION_SCHEMA.PROPERTY_GRAPHS`,
 UNNEST(JSON_EXTRACT_ARRAY(property_graph_metadata_json, "$.nodeTables")) AS node_table_json,
 UNNEST(JSON_EXTRACT_ARRAY(node_table_json, "$.labelAndProperties[0].properties")) AS prop_json
 WHERE JSON_VALUE(prop_json, "$.expressionKind") = "MEASURE"
@@ -1226,592 +1061,577 @@ ORDER BY node_table_name, measure_name;</code></pre>
           <table>
             <thead>
               <tr>
-                <th>node_table_name</th>
-                <th>measure_name</th>
-                <th>measure_expression</th>
-                <th>measure_type</th>
+                <th>Node Table</th>
+                <th>Measure Name</th>
+                <th>Measure Expression</th>
+                <th>Measure Type</th>
               </tr>
             </thead>
             <tbody>
-              <tr><td><code>campaigns</code></td><td><code>total_campaign_budget</code></td><td><code>SUM(weekly_budget)</code></td><td><code>MEASURE&lt;NUMERIC&gt;</code></td></tr>
-              <tr><td><code>customers</code></td><td><code>total_reach</code></td><td><code>COUNT(DISTINCT customer_id)</code></td><td><code>MEASURE&lt;INT64&gt;</code></td></tr>
-              <tr><td><code>order_items</code></td><td><code>gross_revenue</code></td><td><code>SUM(net_revenue)</code></td><td><code>MEASURE&lt;NUMERIC&gt;</code></td></tr>
-              <tr><td><code>order_items</code></td><td><code>total_cogs</code></td><td><code>SUM(cost_of_goods)</code></td><td><code>MEASURE&lt;NUMERIC&gt;</code></td></tr>
-              <tr><td><code>order_items</code></td><td><code>total_refunds</code></td><td><code>SUM(refund_amount)</code></td><td><code>MEASURE&lt;NUMERIC&gt;</code></td></tr>
+              <tr><td><code>channels</code></td><td><code>total_budget</code></td><td><code>SUM(weekly_budget)</code></td><td><code>MEASURE&lt;FLOAT64&gt;</code></td></tr>
+              <tr><td><code>events</code></td><td><code>total_events</code></td><td><code>COUNT(id)</code></td><td><code>MEASURE&lt;INT64&gt;</code></td></tr>
+              <tr><td><code>events</code></td><td><code>total_sessions</code></td><td><code>COUNT(DISTINCT session_id)</code></td><td><code>MEASURE&lt;INT64&gt;</code></td></tr>
+              <tr><td><code>order_items</code></td><td><code>gross_revenue</code></td><td><code>SUM(sale_price)</code></td><td><code>MEASURE&lt;FLOAT64&gt;</code></td></tr>
+              <tr><td><code>order_items</code></td><td><code>total_items_sold</code></td><td><code>COUNT(id)</code></td><td><code>MEASURE&lt;INT64&gt;</code></td></tr>
               <tr><td><code>orders</code></td><td><code>total_orders</code></td><td><code>COUNT(order_id)</code></td><td><code>MEASURE&lt;INT64&gt;</code></td></tr>
-              <tr><td><code>touchpoints</code></td><td><code>total_ad_spend</code></td><td><code>SUM(cpc_cost)</code></td><td><code>MEASURE&lt;NUMERIC&gt;</code></td></tr>
-              <tr><td><code>touchpoints</code></td><td><code>total_clicks</code></td><td><code>COUNT(touchpoint_id)</code></td><td><code>MEASURE&lt;INT64&gt;</code></td></tr>
+              <tr><td><code>products</code></td><td><code>avg_cost</code></td><td><code>AVG(cost)</code></td><td><code>MEASURE&lt;FLOAT64&gt;</code></td></tr>
+              <tr><td><code>products</code></td><td><code>avg_retail_price</code></td><td><code>AVG(retail_price)</code></td><td><code>MEASURE&lt;FLOAT64&gt;</code></td></tr>
+              <tr><td><code>users</code></td><td><code>total_users</code></td><td><code>COUNT(DISTINCT id)</code></td><td><code>MEASURE&lt;INT64&gt;</code></td></tr>
             </tbody>
           </table>
         </div>
 
-        <h2>2. Verify Baseline Measures: Why Relational Joins Double-Count vs. BigQuery Measures</h2>
-        <p>To understand why BigQuery Measures are transformative, observe what happens when we attempt to compute marketing budgets and click counts across a 1-hop relationship using standard SQL joins versus <code>GRAPH_EXPAND</code> + <code>AGG()</code>.</p>
-
-        <h3>Query A: Naive Relational Join Demonstrating Double Counting</h3>
-        <p>In standard relational SQL, joining <code>campaigns</code> (1) to <code>touchpoints</code> (N) causes <code>weekly_budget</code> to duplicate for every single click:</p>
+        <h2>2. The Cartesian Fan-Out Benchmark: Upstream vs. Downstream Variables</h2>
+        <p>Why can't you simply run a standard SQL <code>SUM()</code> across joined tables?</p>
 
         <div class="code-container">
           <div class="code-header">
-            <span>SQL (Naive Relational Join)</span>
+            <span>SQL</span>
             <button class="copy-btn" onclick="copyCode(this)">Copy</button>
           </div>
           <pre><code>SELECT
-  c.channel,
-  c.campaign_name,
-  SUM(c.weekly_budget) AS exploded_budget,
-  COUNT(tp.touchpoint_id) AS total_clicks,
-  ROUND(SUM(tp.cpc_cost), 2) AS total_spend
-FROM `eRetail_marketing.campaigns` c
-JOIN `eRetail_marketing.touchpoints` tp ON c.campaign_id = tp.campaign_id
-GROUP BY c.channel, c.campaign_name
-ORDER BY exploded_budget DESC;</code></pre>
+  channel_name,
+  -- Real upstream budget at channel level:
+  ANY_VALUE(weekly_budget) AS actual_budget,
+  -- Naive sum across joined downstream paths:
+  ROUND(SUM(weekly_budget), 2) AS blown_up_budget,
+  COUNT(*) AS path_row_count,
+  ROUND(SUM(weekly_budget) / ANY_VALUE(weekly_budget)) AS duplication_factor
+FROM GRAPH_TABLE(`thelook_graph.eCommerce_Integrated`
+  MATCH (c:channels)<-[:ATTRIBUTED_TO]-(e:events)-[i:INFLUENCED]->(o:orders)
+  COLUMNS (c.channel_name, c.weekly_budget)
+)
+GROUP BY channel_name
+ORDER BY path_row_count DESC;</code></pre>
         </div>
 
-        <h3>Query B: Graph Expand + AGG() Deduplicates Automatically</h3>
-        <p>By declaring <code>MEASURE(SUM(weekly_budget))</code> in the Property Graph DDL, BigQuery tracks the entity grain and aggregates the budget only once per campaign, regardless of fan-out:</p>
-
-        <div class="code-container">
-          <div class="code-header">
-            <span>GoogleSQL (GRAPH_EXPAND on eCommerce_Integrated)</span>
-            <button class="copy-btn" onclick="copyCode(this)">Copy</button>
-          </div>
-          <pre><code>SELECT
-  campaigns_channel AS channel,
-  campaigns_campaign_name AS campaign_name,
-  AGG(campaigns_total_campaign_budget) AS exact_budget,
-  AGG(touchpoints_total_clicks) AS total_clicks,
-  ROUND(AGG(touchpoints_total_ad_spend), 2) AS exact_spend
-FROM GRAPH_EXPAND("eRetail_marketing.eCommerce_Integrated", start_node => "touchpoints")
-GROUP BY campaigns_channel, campaigns_campaign_name
-ORDER BY exact_budget DESC;</code></pre>
-        </div>
-
-        <h3>Side-by-Side Comparison:</h3>
         <div class="table-container">
           <table>
             <thead>
               <tr>
-                <th>Channel</th>
-                <th>Campaign Name</th>
-                <th>Exploded Budget (SQL Join)</th>
-                <th>Exact Budget (GRAPH_EXPAND)</th>
-                <th>Total Clicks</th>
+                <th>Channel Name</th>
+                <th>Actual Budget</th>
+                <th>Blown-Up Budget (Naive SUM)</th>
+                <th>Path Row Count</th>
                 <th>Duplication Factor</th>
               </tr>
             </thead>
             <tbody>
-              <tr><td>Paid Social</td><td><code>Q4_TikTok_Prospecting_GenZ</code></td><td><strong style="color: #d93025;">$3,256,000</strong></td><td><strong style="color: #1e8e3e;">$5,500</strong></td><td>592</td><td><strong style="color: #d93025;">592x</strong></td></tr>
-              <tr><td>Paid Search</td><td><code>Q4_Search_Generic_Audio</code></td><td><strong style="color: #d93025;">$2,713,500</strong></td><td><strong style="color: #1e8e3e;">$4,500</strong></td><td>603</td><td><strong style="color: #d93025;">603x</strong></td></tr>
-              <tr><td>Paid Social</td><td><code>Q4_Meta_IG_Retargeting</code></td><td><strong style="color: #d93025;">$2,535,000</strong></td><td><strong style="color: #1e8e3e;">$3,750</strong></td><td>676</td><td><strong style="color: #d93025;">676x</strong></td></tr>
-              <tr><td>Paid Search</td><td><code>Q4_Search_Brand_Electronics</code></td><td><strong style="color: #d93025;">$1,947,000</strong></td><td><strong style="color: #1e8e3e;">$3,000</strong></td><td>649</td><td><strong style="color: #d93025;">649x</strong></td></tr>
+              <tr>
+                <td><strong>Email</strong></td>
+                <td><strong>$10,000.00</strong></td>
+                <td><strong style="color: #d93025;">$4,322,470,000.00</strong> ($4.32 Billion!)</td>
+                <td>432,247</td>
+                <td><strong>432,247x</strong></td>
+              </tr>
+              <tr>
+                <td><strong>Adwords</strong></td>
+                <td><strong>$50,000.00</strong></td>
+                <td><strong style="color: #d93025;">$14,276,850,000.00</strong> ($14.28 Billion!)</td>
+                <td>285,537</td>
+                <td><strong>285,537x</strong></td>
+              </tr>
+              <tr>
+                <td><strong>Facebook</strong></td>
+                <td><strong>$30,000.00</strong></td>
+                <td><strong style="color: #d93025;">$2,857,890,000.00</strong> ($2.86 Billion!)</td>
+                <td>95,263</td>
+                <td><strong>95,263x</strong></td>
+              </tr>
+              <tr>
+                <td><strong>YouTube</strong></td>
+                <td><strong>$25,000.00</strong></td>
+                <td><strong style="color: #d93025;">$2,374,225,000.00</strong> ($2.37 Billion!)</td>
+                <td>94,969</td>
+                <td><strong>94,969x</strong></td>
+              </tr>
+              <tr>
+                <td><strong>Organic</strong></td>
+                <td><strong>$5,000.00</strong></td>
+                <td><strong style="color: #d93025;">$242,020,000.00</strong> ($242 Million!)</td>
+                <td>48,404</td>
+                <td><strong>48,404x</strong></td>
+              </tr>
             </tbody>
           </table>
         </div>
 
         <div class="callout warning">
-          <strong>Relational Pitfall:</strong> In relational SQL, <code>weekly_budget</code> is multiplied by the number of touchpoint rows (up to <strong>676x</strong>!). <code>GRAPH_EXPAND</code> + <code>AGG()</code> preserves the exact entity grain of <code>campaigns</code> and automatically sums <code>weekly_budget</code> once per campaign.
+          <strong>Why did this happen? Upstream vs. Downstream:</strong>
+          <ul style="margin-top: 8px;">
+            <li><strong>Upstream Variables:</strong> Defined at a coarse, top-of-funnel grain (e.g. <code>weekly_budget</code> at the Marketing Channel level). There is only <strong>1 row</strong> per channel.</li>
+            <li><strong>Downstream Variables:</strong> Defined at a fine, bottom-of-funnel grain (e.g. <code>events</code> and <code>orders</code>). Each channel connects to hundreds of thousands of downstream paths.</li>
+            <li>When you perform a multi-hop graph match or relational <code>JOIN</code>, the upstream budget is repeated on every single path. Applying a naive <code>SUM(weekly_budget)</code> multiplies the budget by 432,000x!</li>
+          </ul>
         </div>
 
-        <h2>3. Multi-Hop Cartesian Join Explosion: Full-Funnel Double-Counting</h2>
-        <p>What happens when an analyst needs to calculate multi-touch marketing attribution across a 5-hop path from <code>campaigns</code> &rarr; <code>touchpoints</code> &rarr; <code>edge_influenced</code> &rarr; <code>orders</code> &rarr; <code>order_items</code>?</p>
-        <p><strong>Query C: Naive Relational 5-Hop Join Explodes Everything</strong></p>
-        <p>In relational SQL, joining 5 tables with varying 1:N cardinalities causes an astronomical Cartesian explosion:</p>
-        <ul style="margin-left: 20px; margin-bottom: 16px;">
-          <li>Budget explodes by over <strong>40,000%</strong> (multiplied by touchpoints &times; order items).</li>
-          <li>Revenue explodes by over <strong>120%</strong> because order items are duplicated across multiple influencing touchpoints!</li>
-        </ul>
-
-        <p><strong>Query D: The BigQuery Measures + Graph Table Solution</strong></p>
-        <p>To solve this cleanly, combine <code>GRAPH_EXPAND</code> (for upstream node measures) with <code>GRAPH_TABLE</code> (for multi-hop path traversals):</p>
-
-        <div class="code-container">
-          <div class="code-header">
-            <span>GoogleSQL (Unified Measures + Graph Traversal)</span>
-            <button class="copy-btn" onclick="copyCode(this)">Copy</button>
-          </div>
-          <pre><code>WITH campaign_measures AS (
-  -- 1. Extract non-exploded campaign budget and ad spend via GRAPH_EXPAND
-  SELECT
-    campaigns_campaign_name AS campaign_name,
-    campaigns_channel AS channel,
-    AGG(campaigns_total_campaign_budget) AS exact_budget,
-    ROUND(AGG(touchpoints_total_ad_spend), 2) AS exact_ad_spend,
-    AGG(touchpoints_total_clicks) AS total_clicks
-  FROM GRAPH_EXPAND("eRetail_marketing.eCommerce_Integrated", start_node => "touchpoints")
-  GROUP BY campaigns_campaign_name, campaigns_channel
-),
-
-attributed_orders AS (
-  -- 2. Traverse the 5-hop funnel in GRAPH_TABLE and calculate weighted revenue at the leaf grain
-  SELECT
-    campaign_name,
-    ROUND(SUM(CAST(net_revenue AS FLOAT64) * attribution_weight), 2) AS exact_attributed_revenue
-  FROM GRAPH_TABLE(
-    `eRetail_marketing.eCommerce_Integrated`
-    MATCH (c:campaigns)<-[g:GENERATED_BY]-(tp:touchpoints)
-          -[i:INFLUENCED]->(o:orders)
-          <-[b:BELONGS_TO]-(oi:order_items)
-    COLUMNS (
-      c.campaign_name AS campaign_name,
-      oi.net_revenue AS net_revenue,
-      i.attribution_weight AS attribution_weight
-    )
-  )
-  GROUP BY campaign_name
-)
-
--- 3. Fuse both views to calculate exact, uncorrupted True ROAS
-SELECT
-  cm.channel,
-  cm.campaign_name,
-  cm.exact_budget,
-  cm.exact_ad_spend,
-  cm.total_clicks,
-  ao.exact_attributed_revenue,
-  ROUND(ao.exact_attributed_revenue / NULLIF(cm.exact_ad_spend, 0), 2) AS exact_roas
-FROM campaign_measures cm
-JOIN attributed_orders ao ON cm.campaign_name = ao.campaign_name
-ORDER BY exact_roas DESC;</code></pre>
-        </div>
-
-        <h2>4. Architectural Decision Guide: When to Declare Measures vs. When to Use Raw Aggregations</h2>
-        <p>A central architectural question for data engineers is: <strong>"When should I declare a <code>MEASURE(...)</code> on the Property Graph, and when should I use raw aggregations like <code>SUM()</code> inside <code>GRAPH_TABLE</code>?"</strong></p>
-
+        <h2>3. Architectural Decision Guide: Plain SQL vs. GRAPH_TABLE vs. GRAPH_EXPAND</h2>
         <div class="table-container">
           <table>
             <thead>
               <tr>
-                <th>Scenario</th>
-                <th>Recommended Approach</th>
+                <th>Approach</th>
+                <th>When to Use</th>
                 <th>Why?</th>
-                <th>Example</th>
               </tr>
             </thead>
             <tbody>
               <tr>
-                <td><strong>Upstream Entity Metrics</strong><br>(1:N Fan-Out)</td>
-                <td><strong style="color: #1e8e3e;">Declare <code>MEASURE(...)</code> + <code>GRAPH_EXPAND</code></strong></td>
-                <td>Avoids Cartesian multiplication when joining child entities (e.g. clicks under a campaign). BigQuery tracks the entity grain and aggregates once per parent entity.</td>
-                <td><code>campaigns.weekly_budget</code><br><code>touchpoints.cpc_cost</code><br><code>customers.total_reach</code></td>
+                <td><strong>Plain SQL <code>SUM()</code> on Single Table</strong></td>
+                <td>Aggregating a column at its native table grain (e.g. <code>SELECT SUM(weekly_budget) FROM marketing_channels</code>).</td>
+                <td>100% safe. No joins exist to multiply rows.</td>
               </tr>
               <tr>
-                <td><strong>Finest Leaf-Grain Metrics with Normalized Weights</strong></td>
-                <td><strong style="color: #1a73e8;">Raw <code>SUM()</code> in <code>GRAPH_TABLE</code></strong></td>
-                <td>The properties reside at the terminal leaf grain of the traversal, and weights sum to 1.0 (&Sigma; w<sub>i</sub> = 1.0), guaranteeing mathematical integrity without double-counting.</td>
-                <td><code>SUM(net_revenue * attribution_weight)</code> across order items and influence edges</td>
+                <td><strong>Plain SQL <code>SUM()</code> across Multi-Table JOINs</strong></td>
+                <td>❌ <strong>ANTI-PATTERN</strong> on 1:N or N:M relationships.</td>
+                <td>Causes catastrophic Cartesian duplication (e.g. $10k becomes $4.3 Billion).</td>
               </tr>
               <tr>
-                <td><strong>Any Query Tempted to Use <code>ANY_VALUE(col)</code></strong></td>
-                <td><strong style="color: #d93025;">🚨 Refactor to <code>MEASURE(...)</code> + CTE</strong></td>
-                <td>Using <code>ANY_VALUE()</code> inside <code>GRAPH_TABLE</code> is a clear warning sign of duplicated parent attributes across path rows. It silently produces incorrect results when grouping by higher-level dimensions (such as channel).</td>
-                <td><strong>Never use <code>ANY_VALUE(budget)</code></strong>—extract budget via <code>GRAPH_EXPAND</code> in a CTE instead!</td>
+                <td><strong><code>GRAPH_TABLE</code></strong></td>
+                <td>Network traversals, multi-hop paths, edge filtering, and <strong>leaf-grain weighted aggregations</strong>.</td>
+                <td>Evaluates row-level expressions across paths. Safe for revenue/COGS because weights sum to 1.0 (&sum; w<sub>i</sub> = 1.0).</td>
+              </tr>
+              <tr>
+                <td><strong><code>GRAPH_EXPAND</code> + <code>AGG()</code></strong></td>
+                <td>Multi-grain BI rollups combining upstream measures (e.g. channel budget) with downstream measures (e.g. total events).</td>
+                <td>Evaluates declared <code>MEASURE</code>s at their native entity grain independently, completely preventing fan-out errors.</td>
               </tr>
             </tbody>
           </table>
         </div>
 
-        <div class="callout tip">
-          <strong>The Leaf Grain &amp; Weight Rule:</strong> Raw aggregations in <code>GRAPH_TABLE</code> (like Query D's <code>SUM(net_revenue * attribution_weight)</code>) work <em>only</em> because <code>order_items</code> sits at the terminal leaf grain of the graph and <code>attribution_weight</code> mathematically partitions each order's value (&Sigma; w<sub>i</sub> = 1.0). If <code>order_items</code> had child records (like shipments) or unweighted paths, raw <code>SUM()</code> would silently double-count. Whenever you need upstream entity metrics, always declare them as <code>MEASURE</code> properties and extract them via <code>GRAPH_EXPAND</code>.
-        </div>
-
-        <h2>5. Inspect Graph Paths Visually (JSON Graph Object)</h2>
-        <p>You can serialize entire graph subpaths to JSON in pure ISO GQL for visual inspection and debugging:</p>
-
-        <div class="code-container">
-          <div class="code-header">
-            <span>ISO GQL (TO_JSON Path Serialization)</span>
-            <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+        <div class="milestone-callout">
+          <div class="milestone-title">
+            <span class="material-symbols-outlined" style="color: #1a73e8;">rule</span>
+            Summary Rule of Thumb
           </div>
-          <pre><code>GRAPH `eRetail_marketing.eCommerce_Integrated`
-MATCH (c:campaigns)<-[g:GENERATED_BY]-(tp:touchpoints)-[i:INFLUENCED]->(o:orders),
-      (cust:customers WHERE cust.customer_id = 'CUST_0888')-[e:ENGAGED_WITH]->(tp)
-RETURN
-    TO_JSON(cust) AS customer,
-    TO_JSON(e) AS edge_engaged,
-    TO_JSON(tp) AS touchpoint,
-    TO_JSON(g) AS edge_generated,
-    TO_JSON(c) AS campaign,
-    TO_JSON(i) AS edge_influenced,
-    TO_JSON(o) AS orders
-LIMIT 5;</code></pre>
-        </div>
-      </section>
-
-      <!-- Step 6: Use Case 1: Spend & Budget Rollup (GRAPH_EXPAND) -->
-      <section class="step-content" id="step-6">
-        <h1 class="step-main-title">7. Use Case 1: Campaign Budget vs. Actual Ad Spend Rollup (GRAPH_EXPAND)</h1>
-        <p><strong>Scenario:</strong> Right after defining baseline measures in the Property Graph, marketing analysts and BI developers need to build Looker Studio and Tableau dashboards that roll up campaign budgets, click volumes, and ad spend. They need queries that:</p>
-        <ol style="margin-left: 20px; margin-bottom: 16px;">
-          <li>Use standard SQL syntax (<code>SELECT ... FROM ... GROUP BY</code>) compatible with existing BI tools without writing GQL <code>MATCH (...)</code> syntax.</li>
-          <li>Prevent Cartesian budget duplication across thousands of touchpoints without complex subqueries.</li>
-        </ol>
-
-        <div class="code-container">
-          <div class="code-header">
-            <span>GoogleSQL (GRAPH_EXPAND on eCommerce_Integrated)</span>
-            <button class="copy-btn" onclick="copyCode(this)">Copy</button>
-          </div>
-          <pre><code>SELECT
-    campaigns_channel AS channel,
-    campaigns_campaign_name AS campaign_name,
-    AGG(campaigns_total_campaign_budget) AS total_budget,
-    AGG(touchpoints_total_clicks) AS total_clicks,
-    ROUND(AGG(touchpoints_total_ad_spend), 2) AS total_ad_spend,
-    ROUND(AGG(campaigns_total_campaign_budget) - AGG(touchpoints_total_ad_spend), 2) AS remaining_budget,
-    ROUND(AGG(touchpoints_total_ad_spend) / NULLIF(AGG(touchpoints_total_clicks), 0), 2) AS effective_avg_cpc
-FROM GRAPH_EXPAND("eRetail_marketing.eCommerce_Integrated", start_node => "touchpoints")
-GROUP BY channel, campaign_name
-ORDER BY total_ad_spend DESC;</code></pre>
+          <ul>
+            <li><strong>Use <code>GRAPH_TABLE</code></strong> when you need paths, hops, and row-level expressions across connected nodes.</li>
+            <li><strong>Use <code>GRAPH_EXPAND</code></strong> when you need multi-grain reporting and ROAS across hops using declared <code>MEASURE</code>s.</li>
+            <li><strong>Use raw <code>SUM()</code></strong> only on single tables or on normalized leaf-grain columns inside <code>GRAPH_TABLE</code>.</li>
+          </ul>
         </div>
 
-        <div class="table-container">
-          <table>
-            <thead>
-              <tr>
-                <th>channel</th>
-                <th>campaign_name</th>
-                <th>total_budget</th>
-                <th>total_clicks</th>
-                <th>total_ad_spend</th>
-                <th>remaining_budget</th>
-                <th>effective_avg_cpc</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr><td>Paid Search</td><td><code>Q4_Search_Generic_Audio</code></td><td><strong>$4,500</strong></td><td>603</td><td>$2,277.97</td><td>$2,222.03</td><td>$3.78</td></tr>
-              <tr><td>Paid Search</td><td><code>Q4_Search_Brand_Electronics</code></td><td><strong>$3,000</strong></td><td>649</td><td>$1,711.55</td><td>$1,288.45</td><td>$2.64</td></tr>
-              <tr><td>Paid Social</td><td><code>Q4_Meta_IG_Retargeting</code></td><td><strong>$3,750</strong></td><td>676</td><td>$1,251.24</td><td>$2,498.76</td><td>$1.85</td></tr>
-              <tr><td>Affiliate</td><td><code>Q4_Affiliate_TechReview_Blogs</code></td><td><strong>$2,000</strong></td><td>651</td><td>$1,058.11</td><td>$941.89</td><td>$1.63</td></tr>
-              <tr><td>Paid Social</td><td><code>Q4_TikTok_Prospecting_GenZ</code></td><td><strong>$5,500</strong></td><td>592</td><td>$588.63</td><td>$4,911.37</td><td>$0.99</td></tr>
-              <tr><td>Affiliate</td><td><code>Q4_Affiliate_Coupon_Sites</code></td><td><strong>$1,500</strong></td><td>586</td><td>$382.82</td><td>$1,117.18</td><td>$0.65</td></tr>
-              <tr><td>Email Marketing</td><td><code>Q4_Email_Cart_Abandonment</code></td><td><strong>$625</strong></td><td>656</td><td>$81.45</td><td>$543.55</td><td>$0.12</td></tr>
-              <tr><td>Email Marketing</td><td><code>Q4_Email_VIP_Weekly_Drop</code></td><td><strong>$875</strong></td><td>587</td><td>$57.72</td><td>$817.28</td><td>$0.10</td></tr>
-            </tbody>
-          </table>
-        </div>
-
-        <div class="callout tip">
-          <strong>Key Insight:</strong> Notice that <code>total_budget</code> ($4,500, $3,000, etc.) <strong>did not multiply</strong> across the 600+ clicks. <code>GRAPH_EXPAND(..., start_node => "touchpoints")</code> + <code>AGG()</code> flattens the hierarchy and aggregates each declared measure at its correct entity grain directly from the unified master graph <code>eCommerce_Integrated</code>.
-        </div>
-      </section>
-
-      <!-- Step 7: Use Case 2: Customer Journey -->
-      <section class="step-content" id="step-7">
-        <h1 class="step-main-title">8. Use Case 2: Multi-Touch Customer Journey</h1>
-        <p><strong>Scenario:</strong> Trace customer <code>CUST_0888</code>'s sequence of digital touchpoints across Paid Search, Social, and Email leading to orders <code>ORD_0002</code> and <code>ORD_0486</code> using pure ISO GQL on <code>eCommerce_Integrated</code>.</p>
+        <h2>4. Inspect Graph Paths Visually (JSON Graph Object)</h2>
+        <p>You can serialize entire graph subpaths to JSON in pure ISO GQL for visual exploration:</p>
 
         <div class="code-container">
           <div class="code-header">
             <span>ISO GQL</span>
             <button class="copy-btn" onclick="copyCode(this)">Copy</button>
           </div>
-          <pre><code>GRAPH `eRetail_marketing.eCommerce_Integrated`
-MATCH (c:campaigns)
-        <-[g:GENERATED_BY]-(tp:touchpoints)
-        -[i:INFLUENCED]->(o:orders),
-      (cust:customers WHERE cust.customer_id = 'CUST_0888')
-        -[e:ENGAGED_WITH]->(tp)
+          <pre><code>GRAPH `thelook_graph.eCommerce_Integrated`
+MATCH (u:users)-[:GENERATED_EVENT]->(e:events)-[i:INFLUENCED]->(o:orders)
+WHERE u.id = 65516
 RETURN
-    cust.customer_id,
-    c.campaign_name,
-    c.channel,
-    tp.touchpoint_id,
-    tp.device_type,
-    tp.cpc_cost,
-    i.attribution_weight,
-    i.touchpoint_rank,
-    o.order_id
-ORDER BY o.order_id, i.touchpoint_rank;</code></pre>
+  TO_JSON(u) AS user_node,
+  TO_JSON(e) AS event_node,
+  TO_JSON(i) AS influenced_edge,
+  TO_JSON(o) AS order_node
+LIMIT 5;</code></pre>
+        </div>
+      </section>
+
+      <!-- STEP 6 -->
+      <section class="step-content" id="step-6">
+        <h1 class="step-main-title">7. Use Case 1: Campaign Budget vs. Actual Ad Spend Rollup (GRAPH_EXPAND)</h1>
+        <p>Marketing executives need a channel-level rollup of weekly budgets alongside total event volume and active sessions. They need this without writing complex subqueries or risking Cartesian duplication.</p>
+
+        <h2>Standard SQL Query with <code>GRAPH_EXPAND</code></h2>
+        <div class="code-container">
+          <div class="code-header">
+            <span>SQL</span>
+            <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+          </div>
+          <pre><code>SELECT
+  channels_channel_name AS channel,
+  AGG(channels_total_budget) AS weekly_budget,
+  AGG(events_total_events) AS total_events,
+  AGG(events_total_sessions) AS total_sessions
+FROM GRAPH_EXPAND("thelook_graph.eCommerce_Integrated", start_node => "events")
+GROUP BY channel
+ORDER BY total_events DESC;</code></pre>
         </div>
 
+        <div class="callout tip">
+          <strong>Multi-Root Resolution:</strong> Because <code>eCommerce_Integrated</code> connects multiple root tables, specifying <code>start_node =&gt; "events"</code> tells BigQuery which branch of the graph to expand.
+        </div>
+
+        <h2>Query Results</h2>
         <div class="table-container">
           <table>
             <thead>
               <tr>
-                <th>Customer</th>
-                <th>Campaign</th>
                 <th>Channel</th>
-                <th>Device</th>
-                <th>CPC</th>
-                <th>Weight</th>
-                <th>Rank</th>
-                <th>Order</th>
+                <th>Weekly Budget</th>
+                <th>Total Events</th>
+                <th>Total Sessions</th>
               </tr>
             </thead>
             <tbody>
-              <tr><td>CUST_0888</td><td>Q4_Email_Cart_Abandonment</td><td>Email Marketing</td><td>Mobile</td><td>$0.18</td><td>0.25</td><td>1</td><td>ORD_0002</td></tr>
-              <tr><td>CUST_0888</td><td>Q4_Meta_IG_Retargeting</td><td>Paid Social</td><td>Mobile</td><td>$1.65</td><td>0.25</td><td>2</td><td>ORD_0002</td></tr>
-              <tr><td>CUST_0888</td><td>Q4_Email_Cart_Abandonment</td><td>Email Marketing</td><td>Desktop</td><td>$0.16</td><td>0.25</td><td>3</td><td>ORD_0002</td></tr>
-              <tr><td>CUST_0888</td><td>Q4_TikTok_Prospecting_GenZ</td><td>Paid Social</td><td>Desktop</td><td>$0.98</td><td>0.25</td><td>4</td><td>ORD_0002</td></tr>
-              <tr><td>CUST_0888</td><td>Q4_Search_Generic_Audio</td><td>Paid Search</td><td>Mobile</td><td>$4.72</td><td>0.50</td><td>1</td><td>ORD_0486</td></tr>
-              <tr><td>CUST_0888</td><td>Q4_Search_Generic_Audio</td><td>Paid Search</td><td>Mobile</td><td>$4.83</td><td>0.50</td><td>2</td><td>ORD_0486</td></tr>
+              <tr><td><strong>Email</strong></td><td><strong>$10,000.00</strong></td><td>1,091,729</td><td>306,439</td></tr>
+              <tr><td><strong>Adwords</strong></td><td><strong>$50,000.00</strong></td><td>725,102</td><td>204,296</td></tr>
+              <tr><td><strong>YouTube</strong></td><td><strong>$25,000.00</strong></td><td>241,729</td><td>68,233</td></tr>
+              <tr><td><strong>Facebook</strong></td><td><strong>$30,000.00</strong></td><td>241,337</td><td>68,036</td></tr>
+              <tr><td><strong>Organic</strong></td><td><strong>$5,000.00</strong></td><td>121,058</td><td>34,159</td></tr>
             </tbody>
           </table>
         </div>
+
+        <h3>Key Takeaway</h3>
+        <p>Notice that <code>weekly_budget</code> is exact ($10,000 for Email, $50,000 for Adwords) despite rolling up over 1 million events! <code>GRAPH_EXPAND</code> evaluated the declared measures at their native entity grains without any Cartesian multiplication.</p>
       </section>
 
-      <!-- Step 8: Use Case 3: ROAS & Profit (GRAPH_TABLE) -->
+      <!-- STEP 7 -->
+      <section class="step-content" id="step-7">
+        <h1 class="step-main-title">8. Use Case 2: Multi-Touch Customer Journey</h1>
+        <p>Compare the revenue assigned to each marketing channel across three classic attribution models:</p>
+        <ol>
+          <li><strong>First-Touch Attribution:</strong> Gives 100% of the conversion credit to the customer's initial discovery channel.</li>
+          <li><strong>Last-Touch Attribution:</strong> Gives 100% of the credit to the touchpoint immediately preceding the purchase.</li>
+          <li><strong>Linear Attribution:</strong> Distributes credit equally across all touchpoints in the customer's 30-day journey.</li>
+        </ol>
+
+        <h2>Query with <code>GRAPH_TABLE</code></h2>
+        <div class="code-container">
+          <div class="code-header">
+            <span>SQL</span>
+            <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+          </div>
+          <pre><code>SELECT
+  channel,
+  ROUND(SUM(sale_price * first_touch_weight), 2) AS first_touch_revenue,
+  ROUND(SUM(sale_price * last_touch_weight), 2) AS last_touch_revenue,
+  ROUND(SUM(sale_price * linear_weight), 2) AS linear_revenue
+FROM GRAPH_TABLE(`thelook_graph.eCommerce_Integrated`
+  MATCH (e:events)-[i:INFLUENCED]->(o:orders)<-[:BELONGS_TO]-(oi:order_items)
+  COLUMNS (
+    e.traffic_source AS channel,
+    oi.sale_price,
+    i.first_touch_weight,
+    i.last_touch_weight,
+    i.linear_weight
+  )
+)
+GROUP BY channel
+ORDER BY linear_revenue DESC;</code></pre>
+        </div>
+
+        <h2>Query Results</h2>
+        <div class="table-container">
+          <table>
+            <thead>
+              <tr>
+                <th>Channel</th>
+                <th>First-Touch Revenue</th>
+                <th>Last-Touch Revenue</th>
+                <th>Linear Attributed Revenue</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr><td><strong>Email</strong></td><td>$3,681,543.23</td><td>$3,696,447.52</td><td><strong>$3,686,696.80</strong></td></tr>
+              <tr><td><strong>Adwords</strong></td><td>$2,411,693.53</td><td>$2,409,635.01</td><td><strong>$2,403,729.97</strong></td></tr>
+              <tr><td><strong>Facebook</strong></td><td>$799,842.66</td><td>$792,703.50</td><td><strong>$800,999.57</strong></td></tr>
+              <tr><td><strong>YouTube</strong></td><td>$786,474.26</td><td>$789,685.75</td><td><strong>$791,000.88</strong></td></tr>
+              <tr><td><strong>Organic</strong></td><td>$414,224.82</td><td>$405,306.72</td><td><strong>$409,476.12</strong></td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <h3>Key Marketing Takeaways</h3>
+        <ul>
+          <li><strong>Email dominates both discovery and closing:</strong> Generating ~$3.69M under all models, demonstrating powerful retention and re-engagement.</li>
+          <li><strong>Mathematical Integrity:</strong> Because for every order &sum; <code>linear_weight</code> = 1.0, the total sum of linear attributed revenue across all channels ($8,091,903.34) exactly equals total gross merchandise volume.</li>
+        </ul>
+      </section>
+
+      <!-- STEP 8 -->
       <section class="step-content" id="step-8">
         <h1 class="step-main-title">9. Use Case 3: Campaign Profit Contribution & Margin Analysis (GRAPH_TABLE)</h1>
-        <p><strong>Scenario:</strong> Calculate true attributed gross profit and profit margin percentage across campaigns by deducting Cost of Goods Sold (COGS) from attributed gross revenue using <code>GRAPH_TABLE</code> on <code>eCommerce_Integrated</code>:</p>
+        <p>Evaluating channels solely on revenue is misleading. A channel might generate high gross sales by promoting low-margin items. In this 4-hop traversal, we connect events to orders, line items, and product costs to evaluate true <strong>Gross Profit</strong> and <strong>Gross Margin %</strong>.</p>
 
         <div class="milestone-callout">
           <div class="milestone-title">
             <span class="material-symbols-outlined" style="color: #f9ab00;">flag</span>
             🎯 Milestone Checkpoint 3: Multi-Hop Profit Attribution at the Leaf Grain
           </div>
-          <strong>Leaf Grain Normalization:</strong> Because <code>net_revenue</code> and <code>cost_of_goods</code> sit at <code>order_items</code> (the finest leaf grain) and each order's attribution weights sum to 1.0 (&Sigma; w<sub>i</sub> = 1.0), raw <code>SUM()</code> accurately calculates profit contribution without double-counting. Upstream campaign budgets and ad spend are cleanly joined via <code>GRAPH_EXPAND</code> in Use Case 5.
-        </div>
-
-        <div class="callout tip">
-          <strong>Why Raw Aggregation Is Safe Here:</strong> Notice that <code>net_revenue</code> and <code>cost_of_goods</code> reside at <code>order_items</code>—the finest leaf grain of the graph—and each order's revenue is partitioned by normalized weights (&Sigma; <code>attribution_weight</code> = 1.0). Therefore, raw <code>SUM()</code> accurately computes financial contribution without double-counting.
-          <br><br>
-          We intentionally avoid querying coarse parent metrics like <code>weekly_budget</code> here: doing so would tempt the use of <code>ANY_VALUE(budget)</code>, which breaks when aggregating across channels. Upstream budget and ad spend metrics are cleanly joined using <code>GRAPH_EXPAND</code> in Use Case 5!
+          <strong>Objective in Action:</strong> Using BigQuery's <code>GRAPH_TABLE</code> operator, we traverse 4 hops from events to products and apply leaf-grain weighted aggregations.
         </div>
 
         <div class="code-container">
           <div class="code-header">
-            <span>GoogleSQL (GRAPH_TABLE on eCommerce_Integrated)</span>
+            <span>SQL</span>
             <button class="copy-btn" onclick="copyCode(this)">Copy</button>
           </div>
           <pre><code>SELECT
-    channel,
-    campaign_name,
-    ROUND(SUM(CAST(net_revenue AS FLOAT64) * attribution_weight), 2) AS total_attributed_revenue,
-    ROUND(SUM(CAST(cost_of_goods AS FLOAT64) * attribution_weight), 2) AS total_attributed_cogs,
-    ROUND(SUM(CAST(net_revenue AS FLOAT64) * attribution_weight) - SUM(CAST(cost_of_goods AS FLOAT64) * attribution_weight), 2) AS gross_profit,
-    ROUND(SAFE_DIVIDE(
-      SUM(CAST(net_revenue AS FLOAT64) * attribution_weight) - SUM(CAST(cost_of_goods AS FLOAT64) * attribution_weight),
-      SUM(CAST(net_revenue AS FLOAT64) * attribution_weight)
-    ) * 100, 1) AS gross_margin_pct
-FROM GRAPH_TABLE(
-  `eRetail_marketing.eCommerce_Integrated`
-  MATCH (c:campaigns)
-        <-[g:GENERATED_BY]-(tp:touchpoints)
-        -[i:INFLUENCED]->(o:orders)
-        <-[b:BELONGS_TO]-(oi:order_items)
-        -[p:IS_PRODUCT]->(prod:products)
+  channel,
+  ROUND(SUM(sale_price * linear_weight), 2) AS attributed_revenue,
+  ROUND(SUM(cost * linear_weight), 2) AS attributed_cogs,
+  ROUND(SUM((sale_price - cost) * linear_weight), 2) AS gross_profit,
+  ROUND(SAFE_DIVIDE(SUM((sale_price - cost) * linear_weight), SUM(sale_price * linear_weight)) * 100, 2) AS gross_margin_pct
+FROM GRAPH_TABLE(`thelook_graph.eCommerce_Integrated`
+  MATCH (e:events)-[i:INFLUENCED]->(o:orders)<-[:BELONGS_TO]-(oi:order_items)-[:IS_PRODUCT]->(p:products)
   COLUMNS (
-    c.campaign_name AS campaign_name,
-    c.channel AS channel,
-    oi.net_revenue AS net_revenue,
-    oi.cost_of_goods AS cost_of_goods,
-    i.attribution_weight AS attribution_weight
+    e.traffic_source AS channel,
+    oi.sale_price,
+    p.cost,
+    i.linear_weight
   )
 )
-GROUP BY channel, campaign_name
+GROUP BY channel
 ORDER BY gross_profit DESC;</code></pre>
         </div>
 
+        <h2>Query Results</h2>
         <div class="table-container">
           <table>
             <thead>
               <tr>
                 <th>Channel</th>
-                <th>Campaign Name</th>
                 <th>Attributed Revenue</th>
                 <th>Attributed COGS</th>
-                <th>Gross Profit</th>
+                <th>Gross Profit Contribution</th>
                 <th>Gross Margin %</th>
               </tr>
             </thead>
             <tbody>
-              <tr><td><strong>Affiliate</strong></td><td><code>Q4_Affiliate_TechReview_Blogs</code></td><td>$87,625.08</td><td>$42,120.47</td><td><strong>$45,504.61</strong></td><td>51.9%</td></tr>
-              <tr><td><strong>Email Marketing</strong></td><td><code>Q4_Email_VIP_Weekly_Drop</code></td><td>$85,119.09</td><td>$40,630.23</td><td><strong>$44,488.86</strong></td><td>52.3%</td></tr>
-              <tr><td><strong>Email Marketing</strong></td><td><code>Q4_Email_Cart_Abandonment</code></td><td>$79,468.16</td><td>$38,059.91</td><td><strong>$41,408.24</strong></td><td>52.1%</td></tr>
-              <tr><td><strong>Paid Search</strong></td><td><code>Q4_Search_Brand_Electronics</code></td><td>$79,053.28</td><td>$38,163.13</td><td><strong>$40,890.15</strong></td><td>51.7%</td></tr>
-              <tr><td><strong>Paid Social</strong></td><td><code>Q4_TikTok_Prospecting_GenZ</code></td><td>$75,214.12</td><td>$36,473.98</td><td><strong>$38,740.15</strong></td><td>51.5%</td></tr>
-              <tr><td><strong>Paid Social</strong></td><td><code>Q4_Meta_IG_Retargeting</code></td><td>$73,340.26</td><td>$34,984.20</td><td><strong>$38,356.06</strong></td><td>52.3%</td></tr>
-              <tr><td><strong>Paid Search</strong></td><td><code>Q4_Search_Generic_Audio</code></td><td>$69,880.90</td><td>$33,826.43</td><td><strong>$36,054.46</strong></td><td>51.6%</td></tr>
-              <tr><td><strong>Affiliate</strong></td><td><code>Q4_Affiliate_Coupon_Sites</code></td><td>$60,884.49</td><td>$29,480.02</td><td><strong>$31,404.46</strong></td><td>51.6%</td></tr>
+              <tr><td><strong>Email</strong></td><td>$3,686,696.80</td><td>$1,771,312.91</td><td><strong>$1,915,383.88</strong></td><td><strong>51.95%</strong></td></tr>
+              <tr><td><strong>Adwords</strong></td><td>$2,403,729.97</td><td>$1,156,833.86</td><td><strong>$1,246,896.10</strong></td><td><strong>51.87%</strong></td></tr>
+              <tr><td><strong>Facebook</strong></td><td>$800,999.57</td><td>$385,624.62</td><td><strong>$415,374.95</strong></td><td><strong>51.86%</strong></td></tr>
+              <tr><td><strong>YouTube</strong></td><td>$791,000.88</td><td>$380,231.04</td><td><strong>$410,769.83</strong></td><td><strong>51.93%</strong></td></tr>
+              <tr><td><strong>Organic</strong></td><td>$409,476.12</td><td>$196,302.61</td><td><strong>$213,173.51</strong></td><td><strong>52.06%</strong></td></tr>
             </tbody>
           </table>
-        </div></section>
+        </div>
 
-      <!-- Step 9: Use Case 4: Product Influence -->
+        <p>Gross margins are remarkably consistent across channels (~51.9%), proving that all channels drive a healthy merchandise product mix.</p>
+      </section>
+
+      <!-- STEP 9 -->
       <section class="step-content" id="step-9">
         <h1 class="step-main-title">10. Use Case 4: Product-Level Campaign Influence & Category Affinity</h1>
-        <p><strong>Scenario:</strong> Discover which marketing channels drive conversions for specific merchandise categories (Audio, Accessories, Monitors) across 5 graph hops in <code>eCommerce_Integrated</code>:</p>
+        <p>Discover which product categories generate the highest sales volume and trace individual customer journeys across the graph.</p>
+
+        <h2>Product Category Rollup with <code>GRAPH_EXPAND</code></h2>
+        <p>Using <code>start_node =&gt; "order_items"</code>, we can roll up category revenue and unit sales:</p>
 
         <div class="code-container">
           <div class="code-header">
-            <span>GoogleSQL (GRAPH_TABLE on eCommerce_Integrated)</span>
+            <span>SQL</span>
             <button class="copy-btn" onclick="copyCode(this)">Copy</button>
           </div>
           <pre><code>SELECT
-    category AS product_category,
-    product_name,
-    channel AS marketing_channel,
-    campaign_name,
-    COUNT(DISTINCT order_id) AS orders_count,
-    ROUND(SUM(CAST(net_revenue AS FLOAT64) * attribution_weight), 2) AS attributed_sales,
-    ROUND(AVG(days_to_convert), 1) AS avg_days_to_convert
-FROM GRAPH_TABLE(
-  `eRetail_marketing.eCommerce_Integrated`
-  MATCH (c:campaigns)
-        <-[g:GENERATED_BY]-(tp:touchpoints)
-        -[i:INFLUENCED]->(o:orders)
-        <-[b:BELONGS_TO]-(oi:order_items)
-        -[p:IS_PRODUCT]->(prod:products)
-  COLUMNS (
-    c.campaign_name AS campaign_name,
-    c.channel AS channel,
-    prod.category AS category,
-    prod.product_name AS product_name,
-    o.order_id AS order_id,
-    oi.net_revenue AS net_revenue,
-    i.attribution_weight AS attribution_weight,
-    i.days_to_convert AS days_to_convert
-  )
-)
-GROUP BY category, product_name, channel, campaign_name
-ORDER BY category, attributed_sales DESC
-LIMIT 10;</code></pre>
-        </div>
-      </section>
-
-      <!-- Step 10: Use Case 5: Unified ROAS Scorecard (Dual Views on Single Graph) -->
-      <section class="step-content" id="step-10">
-        <h1 class="step-main-title">11. Use Case 5: Unified Executive ROAS Scorecard (Dual Views on a Single Graph)</h1>
-        <p><strong>Scenario:</strong> Fuse top-of-funnel marketing measures (safe budgets & spend via <code>GRAPH_EXPAND</code> with <code>start_node => "touchpoints"</code>) with bottom-of-funnel profit attribution (via <code>GRAPH_TABLE</code>) from the single master graph <code>eCommerce_Integrated</code> to calculate <strong>True ROAS on Actual Ad Spend</strong> vs. <strong>ROAS on Budget</strong> in a single GoogleSQL CTE query:</p>
-
-        <div class="code-container">
-          <div class="code-header">
-            <span>GoogleSQL (Unified CTE Dual Views on eCommerce_Integrated)</span>
-            <button class="copy-btn" onclick="copyCode(this)">Copy</button>
-          </div>
-          <pre><code>WITH marketing_funnel AS (
-  -- 1. Top-of-funnel marketing metrics from eCommerce_Integrated via GRAPH_EXPAND
-  SELECT
-    campaigns_channel AS channel,
-    campaigns_campaign_name AS campaign_name,
-    AGG(campaigns_total_campaign_budget) AS budget,
-    AGG(touchpoints_total_clicks) AS clicks,
-    ROUND(AGG(touchpoints_total_ad_spend), 2) AS ad_spend
-  FROM GRAPH_EXPAND("eRetail_marketing.eCommerce_Integrated", start_node => "touchpoints")
-  GROUP BY channel, campaign_name
-),
-
-sales_attribution AS (
-  -- 2. Bottom-of-funnel 5-hop profit attribution from eCommerce_Integrated via GRAPH_TABLE
-  SELECT
-    campaign_name,
-    ROUND(SUM(CAST(net_revenue AS FLOAT64) * attribution_weight), 2) AS attributed_revenue,
-    ROUND(SUM(CAST(cost_of_goods AS FLOAT64) * attribution_weight), 2) AS attributed_cogs
-  FROM GRAPH_TABLE(
-    `eRetail_marketing.eCommerce_Integrated`
-    MATCH (c:campaigns)
-          <-[g:GENERATED_BY]-(tp:touchpoints)
-          -[i:INFLUENCED]->(o:orders)
-          <-[b:BELONGS_TO]-(oi:order_items)
-    COLUMNS (
-      c.campaign_name AS campaign_name,
-      oi.net_revenue AS net_revenue,
-      oi.cost_of_goods AS cost_of_goods,
-      i.attribution_weight AS attribution_weight
-    )
-  )
-  GROUP BY campaign_name
-)
-
--- 3. Combine both views of the same graph into a unified Executive ROAS Scorecard
-SELECT
-  mf.channel,
-  mf.campaign_name,
-  mf.budget,
-  mf.clicks,
-  mf.ad_spend,
-  sa.attributed_revenue,
-  sa.attributed_cogs,
-  ROUND(sa.attributed_revenue - sa.attributed_cogs, 2) AS gross_profit,
-  ROUND(sa.attributed_revenue / NULLIF(mf.ad_spend, 0), 2) AS roas_on_actual_spend,
-  ROUND(sa.attributed_revenue / NULLIF(mf.budget, 0), 2) AS roas_on_budget
-FROM marketing_funnel mf
-JOIN sales_attribution sa ON mf.campaign_name = sa.campaign_name
-ORDER BY gross_profit DESC;</code></pre>
+  products_category AS category,
+  AGG(order_items_gross_revenue) AS category_revenue,
+  AGG(order_items_total_items_sold) AS items_sold,
+  AGG(products_avg_cost) AS avg_item_cost,
+  AGG(products_avg_retail_price) AS avg_item_retail_price
+FROM GRAPH_EXPAND("thelook_graph.eCommerce_Integrated", start_node => "order_items")
+GROUP BY category
+ORDER BY category_revenue DESC
+LIMIT 5;</code></pre>
         </div>
 
         <div class="table-container">
           <table>
             <thead>
               <tr>
-                <th>channel</th>
-                <th>campaign_name</th>
-                <th>budget</th>
-                <th>clicks</th>
-                <th>ad_spend</th>
-                <th>attributed_revenue</th>
-                <th>attributed_cogs</th>
-                <th>gross_profit</th>
-                <th>roas_on_actual_spend</th>
-                <th>roas_on_budget</th>
+                <th>Category</th>
+                <th>Category Revenue</th>
+                <th>Items Sold</th>
+                <th>Avg Item Cost</th>
+                <th>Avg Retail Price</th>
               </tr>
             </thead>
             <tbody>
-              <tr><td><strong>Affiliate</strong></td><td><code>Q4_Affiliate_TechReview_Blogs</code></td><td>$2,000</td><td>651</td><td>$1,058.11</td><td>$87,625.08</td><td>$42,120.47</td><td><strong>$45,504.61</strong></td><td><strong>82.81x</strong></td><td>43.81x</td></tr>
-              <tr><td><strong>Email Marketing</strong></td><td><code>Q4_Email_VIP_Weekly_Drop</code></td><td>$875</td><td>587</td><td>$57.72</td><td>$85,119.09</td><td>$40,630.23</td><td><strong>$44,488.86</strong></td><td><strong>1474.69x</strong></td><td>97.28x</td></tr>
-              <tr><td><strong>Email Marketing</strong></td><td><code>Q4_Email_Cart_Abandonment</code></td><td>$625</td><td>656</td><td>$81.45</td><td>$79,468.16</td><td>$38,059.91</td><td><strong>$41,408.25</strong></td><td><strong>975.67x</strong></td><td>127.15x</td></tr>
-              <tr><td><strong>Paid Search</strong></td><td><code>Q4_Search_Brand_Electronics</code></td><td>$3,000</td><td>649</td><td>$1,711.55</td><td>$79,053.28</td><td>$38,163.13</td><td><strong>$40,890.15</strong></td><td><strong>46.19x</strong></td><td>26.35x</td></tr>
-              <tr><td><strong>Paid Social</strong></td><td><code>Q4_TikTok_Prospecting_GenZ</code></td><td>$5,500</td><td>592</td><td>$588.63</td><td>$75,214.12</td><td>$36,473.98</td><td><strong>$38,740.14</strong></td><td><strong>127.78x</strong></td><td>13.68x</td></tr>
-              <tr><td><strong>Paid Social</strong></td><td><code>Q4_Meta_IG_Retargeting</code></td><td>$3,750</td><td>676</td><td>$1,251.24</td><td>$73,340.26</td><td>$34,984.20</td><td><strong>$38,356.06</strong></td><td><strong>58.61x</strong></td><td>19.56x</td></tr>
-              <tr><td><strong>Paid Search</strong></td><td><code>Q4_Search_Generic_Audio</code></td><td>$4,500</td><td>603</td><td>$2,277.97</td><td>$69,880.90</td><td>$33,826.43</td><td><strong>$36,054.47</strong></td><td><strong>30.68x</strong></td><td>15.53x</td></tr>
-              <tr><td><strong>Affiliate</strong></td><td><code>Q4_Affiliate_Coupon_Sites</code></td><td>$1,500</td><td>586</td><td>$382.82</td><td>$60,884.49</td><td>$29,480.02</td><td><strong>$31,404.47</strong></td><td><strong>159.04x</strong></td><td>40.59x</td></tr>
+              <tr><td><strong>Outerwear & Coats</strong></td><td>$986,751.74</td><td>6,477</td><td>$67.45</td><td>$152.35</td></tr>
+              <tr><td><strong>Jeans</strong></td><td>$947,438.95</td><td>9,376</td><td>$46.82</td><td>$101.05</td></tr>
+              <tr><td><strong>Sweaters</strong></td><td>$628,585.78</td><td>8,099</td><td>$36.12</td><td>$77.61</td></tr>
+              <tr><td><strong>Swim</strong></td><td>$484,543.54</td><td>8,250</td><td>$26.90</td><td>$58.73</td></tr>
+              <tr><td><strong>Suits & Sport Coats</strong></td><td>$481,266.09</td><td>3,716</td><td>$61.20</td><td>$129.51</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <h2>Customer Journey Traversal (Pure ISO GQL)</h2>
+        <p>Trace how active shopper <strong>Paul</strong> (<code>user_id = 65516</code>) interacted with touchpoints across Adwords prior to placing orders:</p>
+
+        <div class="code-container">
+          <div class="code-header">
+            <span>ISO GQL</span>
+            <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+          </div>
+          <pre><code>GRAPH `thelook_graph.eCommerce_Integrated`
+MATCH (u:users)-[:GENERATED_EVENT]->(e:events)-[i:INFLUENCED]->(o:orders)
+WHERE u.id = 65516
+RETURN
+  u.id AS user_id,
+  u.first_name,
+  e.traffic_source,
+  e.event_type,
+  i.touchpoint_rank,
+  i.linear_weight,
+  o.order_id
+ORDER BY o.order_id, i.touchpoint_rank
+LIMIT 5;</code></pre>
+        </div>
+
+        <div class="table-container">
+          <table>
+            <thead>
+              <tr>
+                <th>User ID</th>
+                <th>First Name</th>
+                <th>Traffic Source</th>
+                <th>Event Type</th>
+                <th>Touchpoint Rank</th>
+                <th>Linear Weight</th>
+                <th>Order ID</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr><td>65516</td><td>Paul</td><td>Adwords</td><td>department</td><td>16</td><td>0.0370</td><td>81975</td></tr>
+              <tr><td>65516</td><td>Paul</td><td>Adwords</td><td>department</td><td>16</td><td>0.0127</td><td>81973</td></tr>
+              <tr><td>65516</td><td>Paul</td><td>Adwords</td><td>department</td><td>16</td><td>0.0119</td><td>81976</td></tr>
+              <tr><td>65516</td><td>Paul</td><td>Adwords</td><td>department</td><td>16</td><td>0.0112</td><td>81974</td></tr>
+              <tr><td>65516</td><td>Paul</td><td>Adwords</td><td>cart</td><td>67</td><td>0.0127</td><td>81973</td></tr>
             </tbody>
           </table>
         </div>
       </section>
 
-      <!-- Step 11: Gemini Enterprise CA Agent -->
+      <!-- STEP 10 -->
+      <section class="step-content" id="step-10">
+        <h1 class="step-main-title">11. Use Case 5: Unified Executive ROAS Scorecard (Dual Views on a Single Graph)</h1>
+        <p>The Chief Marketing Officer needs a unified scorecard that brings together:</p>
+        <ol>
+          <li><strong>Top-of-Funnel Marketing Measures:</strong> Weekly budget and total sessions from <code>eCommerce_Integrated</code> via <code>GRAPH_EXPAND(..., start_node =&gt; "events")</code>.</li>
+          <li><strong>Bottom-of-Funnel Profit Attribution:</strong> Attributed revenue, COGS, and gross profit from <code>eCommerce_Integrated</code> via <code>GRAPH_TABLE</code>.</li>
+          <li><strong>True ROAS on Budget:</strong> Attributed Revenue divided by Budget.</li>
+        </ol>
+
+        <h2>Unified Single-Graph Dual Query</h2>
+        <div class="code-container">
+          <div class="code-header">
+            <span>SQL</span>
+            <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+          </div>
+          <pre><code>WITH marketing_funnel AS (
+  -- 1. Top-of-funnel marketing metrics from eCommerce_Integrated via GRAPH_EXPAND
+  SELECT
+    channels_channel_name AS channel,
+    AGG(channels_total_budget) AS weekly_budget,
+    AGG(events_total_events) AS total_events,
+    AGG(events_total_sessions) AS total_sessions
+  FROM GRAPH_EXPAND("thelook_graph.eCommerce_Integrated", start_node => "events")
+  GROUP BY channel
+),
+
+sales_attribution AS (
+  -- 2. Bottom-of-funnel 4-hop profit attribution from eCommerce_Integrated via GRAPH_TABLE
+  SELECT
+    channel,
+    ROUND(SUM(sale_price * linear_weight), 2) AS attributed_revenue,
+    ROUND(SUM(cost * linear_weight), 2) AS attributed_cogs,
+    ROUND(SUM((sale_price - cost) * linear_weight), 2) AS gross_profit
+  FROM GRAPH_TABLE(`thelook_graph.eCommerce_Integrated`
+    MATCH (e:events)-[i:INFLUENCED]->(o:orders)<-[:BELONGS_TO]-(oi:order_items)-[:IS_PRODUCT]->(p:products)
+    COLUMNS (
+      e.traffic_source AS channel,
+      oi.sale_price,
+      p.cost,
+      i.linear_weight
+    )
+  )
+  GROUP BY channel
+)
+
+SELECT
+  m.channel,
+  m.weekly_budget,
+  m.total_events,
+  m.total_sessions,
+  s.attributed_revenue,
+  s.attributed_cogs,
+  s.gross_profit,
+  ROUND(s.attributed_revenue / NULLIF(m.weekly_budget, 0), 2) AS roas_on_budget,
+  ROUND(SAFE_DIVIDE(s.gross_profit, s.attributed_revenue) * 100, 2) AS gross_margin_pct
+FROM marketing_funnel m
+JOIN sales_attribution s
+  ON m.channel = s.channel
+ORDER BY s.attributed_revenue DESC;</code></pre>
+        </div>
+
+        <h2>Query Results</h2>
+        <div class="table-container">
+          <table>
+            <thead>
+              <tr>
+                <th>Channel</th>
+                <th>Weekly Budget</th>
+                <th>Total Events</th>
+                <th>Total Sessions</th>
+                <th>Attributed Revenue</th>
+                <th>Attributed COGS</th>
+                <th>Gross Profit</th>
+                <th>ROAS on Budget</th>
+                <th>Gross Margin %</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr><td><strong>Email</strong></td><td>$10,000.00</td><td>1,091,729</td><td>306,439</td><td><strong>$3,686,696.80</strong></td><td>$1,771,312.91</td><td><strong>$1,915,383.88</strong></td><td><strong>368.67x</strong></td><td>51.95%</td></tr>
+              <tr><td><strong>Adwords</strong></td><td>$50,000.00</td><td>725,102</td><td>204,296</td><td><strong>$2,403,729.97</strong></td><td>$1,156,833.86</td><td><strong>$1,246,896.10</strong></td><td><strong>48.07x</strong></td><td>51.87%</td></tr>
+              <tr><td><strong>Facebook</strong></td><td>$30,000.00</td><td>241,337</td><td>68,036</td><td><strong>$800,999.57</strong></td><td>$385,624.62</td><td><strong>$415,374.95</strong></td><td><strong>26.70x</strong></td><td>51.86%</td></tr>
+              <tr><td><strong>YouTube</strong></td><td>$25,000.00</td><td>241,729</td><td>68,233</td><td><strong>$791,000.88</strong></td><td>$380,231.04</td><td><strong>$410,769.83</strong></td><td><strong>31.64x</strong></td><td>51.93%</td></tr>
+              <tr><td><strong>Organic</strong></td><td>$5,000.00</td><td>121,058</td><td>34,159</td><td><strong>$409,476.12</strong></td><td>$196,302.61</td><td><strong>$213,173.51</strong></td><td><strong>81.90x</strong></td><td>52.06%</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- STEP 11 -->
       <section class="step-content" id="step-11">
         <h1 class="step-main-title">12. Conversational Analytics in BigQuery Studio & Gemini Enterprise</h1>
-        <p>To empower non-technical decision makers, deploy a <strong>Conversational Analytics (CA) Data Agent</strong> directly from <strong>BigQuery Studio</strong> to <strong>Gemini Enterprise</strong>.</p>
+        <p>To make these graph insights accessible to non-technical executives, deploy a <strong>Conversational Analytics (CA)</strong> data agent directly from <strong>BigQuery Studio</strong> to <strong>Gemini Enterprise</strong>.</p>
 
         <div class="milestone-callout">
           <div class="milestone-title">
             <span class="material-symbols-outlined" style="color: #f9ab00;">flag</span>
             🎯 Milestone Checkpoint 4: Grounding AI Agents with Semantic Graph Measures
           </div>
-          <strong>Objective in Action:</strong> Grounding LLMs on raw tables often leads to calculation errors when computing metrics like Net ROAS or Gross Profit. Because our unified Property Graph <code>eCommerce_Integrated</code> explicitly defines semantic measures (<code>total_campaign_budget</code>, <code>total_ad_spend</code>, <code>gross_revenue</code>, <code>total_cogs</code>), the Conversational Analytics agent leverages these standardized measures to query data reliably and answer executive questions with high fidelity.
+          <strong>Objective in Action:</strong> Grounding LLMs on raw tables often leads to calculation errors when computing complex metrics like ROAS or Gross Margin. Because our Property Graph <code>eCommerce_Integrated</code> defines semantic measures (<code>total_budget</code>, <code>gross_revenue</code>, <code>total_events</code>, <code>avg_cost</code>), the agent leverages these pre-defined formulas to query data reliably and answer executive questions with high fidelity.
         </div>
 
-        <h2>Creating and Deploying the Agent in BigQuery Studio</h2>
-        <ol style="margin-left: 20px; margin-bottom: 24px;">
-          <li>In the Google Cloud Console, navigate to <strong>BigQuery</strong> &gt; <strong>Studio</strong>.</li>
-          <li>Open dataset <code>eRetail_marketing</code> and locate <code>eCommerce_Integrated</code>.</li>
-          <li>Select <strong>Create Data Agent</strong> (or launch <strong>Data Canvas</strong> with Conversational Analytics).</li>
-          <li>Name the agent: <code>Marketing-Attribution-Agent</code> and set its description.</li>
-          <li>Attach dataset <code>eRetail_marketing</code> and Property Graph <code>eCommerce_Integrated</code>.</li>
-          <li>Click <strong>Deploy to Gemini Enterprise</strong> and select your enterprise app destination.</li>
+        <div class="diagram-box">+───────────────────────────────────────────────────+
+| BigQuery Studio / Data Canvas                     |
+| (Property Graph: eCommerce_Integrated             |
+|  with Semantic MEASUREs)                          |
++─────────────────────────┬─────────────────────────+
+                          │ 1. Create & Ground CA Data Agent
+                          ▼
++───────────────────────────────────────────────────+
+| Conversational Analytics Agent                    |
+| (Marketing-Attribution-Agent)                     |
++─────────────────────────┬─────────────────────────+
+                          │ 2. Deploy to Gemini Enterprise
+                          ▼
++───────────────────────────────────────────────────+
+| Gemini Enterprise Chat / Copilot                  |
+| (Business User Natural Language)                  |
++───────────────────────────────────────────────────+</div>
+
+        <h2>Steps to Create and Deploy from BigQuery Studio</h2>
+        <ol>
+          <li><strong>Open BigQuery Studio:</strong> In the Google Cloud Console, navigate to <strong>BigQuery</strong> &gt; <strong>Studio</strong>. Open dataset <code>thelook_graph</code> and verify the Property Graph: <code>eCommerce_Integrated</code>.</li>
+          <li><strong>Create the Conversational Analytics Agent:</strong> Select <strong>Create Data Agent</strong>. Set Display Name to <code>Marketing-Attribution-Agent</code>. Attach dataset <code>thelook_graph</code> and Property Graph <code>eCommerce_Integrated</code>.</li>
+          <li><strong>Deploy to Gemini Enterprise:</strong> Click <strong>Deploy to Gemini Enterprise</strong> and select your target application.</li>
         </ol>
-
-        <h2>Interactive Conversation Simulation</h2>
-        <div class="chat-simulation">
-          <div class="chat-header">
-            <span class="chat-title">
-              <span class="material-symbols-outlined">smart_toy</span>
-              Marketing-Attribution-Agent
-            </span>
-            <span style="font-size: 0.75rem; color: #5f6368;">Gemini Enterprise Connected</span>
-          </div>
-          <div class="chat-body">
-            <div class="chat-msg msg-user">
-              "What was customer CUST_0888's conversion journey and which ads influenced their orders?"
-            </div>
-            <div class="chat-msg msg-agent">
-              <strong>Customer CUST_0888 Conversion Journey:</strong><br><br>
-              Customer <code>CUST_0888</code> placed 2 orders influenced by 6 digital touchpoints:<br><br>
-              • <strong>Order ORD_0002 ($359.98)</strong>: 4 touchpoints (25% weight each) across Mobile Cart Abandonment Email ($0.18 CPC), Meta Instagram Retargeting ($1.65 CPC), Desktop Email Reminder ($0.16 CPC), and TikTok Prospecting ($0.98 CPC).<br>
-              • <strong>Order ORD_0486 ($179.98)</strong>: 2 Paid Search Mobile clicks for Generic Audio (50% weight each, avg CPC $4.78).
-            </div>
-          </div>
-        </div>
       </section>
 
-      <!-- Step 12: Clean Up -->
+      <!-- STEP 12 -->
       <section class="step-content" id="step-12">
         <h1 class="step-main-title">13. Clean Up</h1>
-        <p>To avoid recurring charges, remove the dataset and BigQuery reservation:</p>
+        <p>To prevent unwanted charges in your Google Cloud account after completing this lab, clean up the resources:</p>
 
         <div class="code-container">
           <div class="code-header">
@@ -1819,58 +1639,61 @@ ORDER BY gross_profit DESC;</code></pre>
             <button class="copy-btn" onclick="copyCode(this)">Copy</button>
           </div>
           <pre><code>-- 1. Drop Property Graph and Dataset
-DROP PROPERTY GRAPH IF EXISTS `eRetail_marketing.eCommerce_Integrated`;
-DROP SCHEMA IF EXISTS `eRetail_marketing` CASCADE;</code></pre>
+DROP PROPERTY GRAPH IF EXISTS `thelook_graph.eCommerce_Integrated`;
+DROP SCHEMA IF EXISTS `thelook_graph` CASCADE;</code></pre>
         </div>
+
+        <p>In Cloud Shell, delete the BigQuery reservation:</p>
 
         <div class="code-container">
           <div class="code-header">
-            <span>bash</span>
+            <span>BASH</span>
             <button class="copy-btn" onclick="copyCode(this)">Copy</button>
           </div>
-          <pre><code># Delete reservation assignment and reservation
-bq rm --reservation_assignment \
-  --project_id=${PROJECT_ID} \
-  --location=${REGION} \
-  ${RESERVATION_NAME}.QUERY_PROJECT_${PROJECT_ID}
+          <pre><code># Delete reservation assignment
+bq rm --reservation_assignment   --project_id=${PROJECT_ID}   --location=${REGION}   ${RESERVATION_NAME}.QUERY_PROJECT_${PROJECT_ID}
 
-bq rm --reservation \
-  --project_id=${PROJECT_ID} \
-  --location=${REGION} \
-  ${RESERVATION_NAME}</code></pre>
+# Delete reservation
+bq rm --reservation   --project_id=${PROJECT_ID}   --location=${REGION}   ${RESERVATION_NAME}</code></pre>
         </div>
       </section>
 
-      <!-- Step 13: Conclusion -->
+      <!-- STEP 13 -->
       <section class="step-content" id="step-13">
         <h1 class="step-main-title">14. Conclusion</h1>
-        <p>Congratulations! You have successfully built a full-stack Marketing Attribution and ROAS Graph in <strong>BigQuery Graph</strong> and queried it conversationally using <strong>Gemini Enterprise</strong>.</p>
+        <p>Congratulations! You have successfully built an end-to-end Marketing Attribution & ROAS Analysis Property Graph with BigQuery Graph and integrated it with a Conversational Analytics Agent deployed in Gemini Enterprise.</p>
 
         <h2>🏆 Goal Achievement Summary</h2>
-        <ul style="list-style-type: none; padding-left: 0;">
-          <li style="margin-bottom: 12px;">✅ <strong>Unified Enterprise Property Graph Modeling</strong> — Constructed the single 6-entity master graph <code>eCommerce_Integrated</code> directly over BigQuery tables without data duplication or maintaining separate siloed graphs.</li>
-          <li style="margin-bottom: 12px;">✅ <strong>Semantic Measures (<code>MEASURE(...)</code>)</strong> — Embedded pre-aggregated business formulas (<code>total_campaign_budget</code>, <code>total_ad_spend</code>, <code>gross_revenue</code>, <code>total_cogs</code>, <code>total_reach</code>) directly into nodes to eliminate Cartesian duplication.</li>
-          <li style="margin-bottom: 12px;">✅ <strong>Dimensional BI Rollups with <code>GRAPH_EXPAND</code></strong> — Flattened the marketing hierarchy on demand with <code>GRAPH_EXPAND(..., start_node => "touchpoints")</code> and <code>AGG()</code> for fast, on-demand reporting.</li>
-          <li style="margin-bottom: 12px;">✅ <strong>ISO GQL Traversals & <code>GRAPH_TABLE</code></strong> — Used <code>MATCH ... RETURN</code> and hybrid <code>GRAPH_TABLE</code> queries to navigate multi-touch customer journeys and compute profit-adjusted ROAS.</li>
-          <li style="margin-bottom: 12px;">✅ <strong>Unified Single-Graph Dual Paradigm</strong> — Fused <code>GRAPH_EXPAND</code> and <code>GRAPH_TABLE</code> on the same single graph in a single GoogleSQL CTE query to compare True ROAS on Actual Ad Spend vs. ROAS on Budget.</li>
-          <li style="margin-bottom: 12px;">✅ <strong>Conversational Agent Grounding</strong> — Created a Conversational Analytics Data Agent in BigQuery Studio and deployed it to Gemini Enterprise to bridge technical graph queries with natural language business decision-making.</li>
+        <ul>
+          <li>✅ <strong>Zero-Copy Property Graph Modeling:</strong> Constructed the single master graph <code>eCommerce_Integrated</code> directly over Google's public <code>thelook_ecommerce</code> dataset without data duplication or approval hurdles.</li>
+          <li>✅ <strong>Semantic Measures (<code>MEASURE(...)</code>):</strong> Embedded pre-aggregated business formulas (<code>total_budget</code>, <code>gross_revenue</code>, <code>total_events</code>, <code>avg_cost</code>) directly into graph nodes.</li>
+          <li>✅ <strong>Multi-Grain Reporting with <code>GRAPH_EXPAND</code>:</strong> Flattened the marketing hierarchy on demand with <code>GRAPH_EXPAND(..., start_node =&gt; "events")</code> and <code>AGG()</code> for fast reporting without fan-out inflation.</li>
+          <li>✅ <strong>Multi-Touch Marketing Attribution:</strong> Compared First-Touch, Last-Touch, and Linear Attribution models using <code>GRAPH_TABLE</code> with normalized weights (&sum; w<sub>i</sub> = 1.0).</li>
+          <li>✅ <strong>Unified Single-Graph Dual Paradigm:</strong> Fused <code>GRAPH_EXPAND</code> and <code>GRAPH_TABLE</code> on the same graph in a single GoogleSQL CTE query to compare True ROAS on Budget against gross margin.</li>
+          <li>✅ <strong>Conversational Agent Grounding:</strong> Grounded a Conversational Analytics Data Agent in BigQuery Studio with semantic graph measures and deployed it to Gemini Enterprise.</li>
+        </ul>
+
+        <h2>Next Steps & Further Reading</h2>
+        <ul>
+          <li><a href="https://cloud.google.com/bigquery/docs/graph-overview" target="_blank">BigQuery Property Graph Documentation</a></li>
+          <li><a href="https://cloud.google.com/bigquery/docs/reference/standard-sql/graph-query-language" target="_blank">ISO GQL in GoogleSQL</a></li>
+          <li><a href="https://cloud.google.com/bigquery/docs/reference/standard-sql/graph-query-language#graph_expand" target="_blank">GRAPH_EXPAND Documentation</a></li>
+          <li><a href="https://cloud.google.com/gemini/docs/enterprise" target="_blank">Gemini Enterprise Agent Studio</a></li>
         </ul>
       </section>
 
-      <!-- Content Footer Navigation -->
-      <div class="content-footer">
-        <button class="btn-nav secondary" id="prevBtn" onclick="prevStep()" disabled>
-          <span class="material-symbols-outlined">arrow_back</span>
-          Previous
-        </button>
-        <button class="btn-nav" id="nextBtn" onclick="nextStep()">
-          Next
-          <span class="material-symbols-outlined">arrow_forward</span>
-        </button>
-      </div>
-
     </main>
   </div>
+
+  <!-- Bottom Navigation Bar -->
+  <footer class="bottom-nav">
+    <button class="nav-btn btn-prev" id="prevBtn" onclick="prevStep()" disabled>
+      <span class="material-symbols-outlined">arrow_back</span> Back
+    </button>
+    <button class="nav-btn btn-next" id="nextBtn" onclick="nextStep()">
+      Next <span class="material-symbols-outlined">arrow_forward</span>
+    </button>
+  </footer>
 
   <script>
     let currentStep = 0;
@@ -1879,16 +1702,16 @@ bq rm --reservation \
     const stepTitles = [
       "1. Introduction",
       "2. Setup and Requirements",
-      "3. Creating the Schema and Tables",
-      "4. Loading Sample Data",
-      "5. Defining the Unified Property Graph & Measures",
+      "3. Creating Schema & Reference Tables",
+      "4. Verifying Public & Reference Data",
+      "5. Defining Property Graph & Measures",
       "6. Inspecting Graph Schema & Measures",
-      "7. Use Case 1: Campaign Budget vs. Ad Spend Rollup",
-      "8. Use Case 2: Multi-Touch Customer Journey",
-      "9. Use Case 3: Campaign Profit Contribution & Margin Analysis",
-      "10. Use Case 4: Product-Level Campaign Influence",
+      "7. Use Case 1: Spend & Budget Rollup",
+      "8. Use Case 2: Multi-Touch Attribution",
+      "9. Use Case 3: Profit Contribution & Margin Analysis",
+      "10. Use Case 4: Category Performance & Customer Journey",
       "11. Use Case 5: Unified Executive ROAS Scorecard",
-      "12. Gemini Enterprise CA Agent & A2A",
+      "12. Conversational Analytics in BigQuery Studio & Gemini Enterprise",
       "13. Clean Up",
       "14. Conclusion"
     ];

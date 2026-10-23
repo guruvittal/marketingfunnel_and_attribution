@@ -6,7 +6,7 @@ This guide documents how the **Marketing-Attribution-Agent** is created and grou
 
 ## Architecture Overview
 
-The agent is powered by Google's BigQuery Conversational Analytics engine, grounded directly on the unified Property Graph schema (`eCommerce_Integrated`) and underlying marketing tables.
+The agent is powered by Google's BigQuery Conversational Analytics engine, grounded directly on the unified Property Graph schema (`thelook_graph.eCommerce_Integrated`) spanning `bigquery-public-data.thelook_ecommerce` and local attribution views.
 
 ```
 +───────────────────────────────────────────────────+
@@ -28,8 +28,8 @@ The agent is powered by Google's BigQuery Conversational Analytics engine, groun
 +───────────────────────────────────────────────────+
 ```
 
-When a business user asks a natural language question (e.g., *"Which campaign had the best ROAS?"*):
-1. The agent translates user intent into a valid ISO GQL or GoogleSQL graph query (`GRAPH ... MATCH ...`, `GRAPH_TABLE(...)`, or `GRAPH_EXPAND(..., start_node => "touchpoints")`).
+When a business user asks a natural language question (e.g., *"Which marketing channel had the best ROAS?"*):
+1. The agent translates user intent into a valid ISO GQL or GoogleSQL graph query (`GRAPH ... MATCH ...`, `GRAPH_TABLE(...)`, or `GRAPH_EXPAND(..., start_node => "events")`).
 2. Dispatches the query securely to BigQuery.
 3. Interprets the multi-touch attribution results and returns formatted analytical insights, data tables, and actionable business recommendations.
 
@@ -39,15 +39,15 @@ When a business user asks a natural language question (e.g., *"Which campaign ha
 
 ### Step 1: Ground on BigQuery Property Graph
 1. Navigate to **BigQuery** > **Studio** in the Google Cloud Console.
-2. In the Explorer pane, expand your project and dataset `eRetail_marketing`.
-3. Verify that the Property Graph `eCommerce_Integrated` and its underlying tables are present.
+2. In the Explorer pane, expand your project and dataset `thelook_graph`.
+3. Verify that the Property Graph `eCommerce_Integrated` and its underlying tables/views are present.
 
 ### Step 2: Create the Conversational Analytics Data Agent
 1. In BigQuery Studio, select **Create Data Agent** (or use **Data Canvas** with Conversational Analytics enabled).
 2. Configure agent metadata:
    - **Display Name**: `Marketing-Attribution-Agent`
-   - **Description**: `Answers questions about marketing touchpoints, attribution graphs, campaign ROAS, and customer conversion journeys.`
-3. Select the data sources: Attach dataset `eRetail_marketing` and Property Graph `eCommerce_Integrated`.
+   - **Description**: `Answers questions about marketing touchpoints, attribution graphs, channel ROAS, and customer conversion journeys using thelook_ecommerce.`
+3. Select the data sources: Attach dataset `thelook_graph` and Property Graph `eCommerce_Integrated`.
 
 ### Step 3: Deploy to Gemini Enterprise
 1. In the agent configuration screen, click **Deploy to Gemini Enterprise**.
@@ -63,7 +63,7 @@ Once deployed, the agent is immediately discoverable and callable within Gemini 
 ```
 [Business Executive]
        │
-       ▼ (Natural Language Question: "What was our net ROAS on Paid Search vs Email?")
+       ▼ (Natural Language Question: "What was our net ROAS on Search vs Email?")
 [Gemini Enterprise Copilot]
        │
        ▼ (Routed to Agent)
@@ -79,7 +79,6 @@ Once deployed, the agent is immediately discoverable and callable within Gemini 
 [Agent Synthesis & Natural Language Response]
        │
        ▼
-"Email Marketing delivered the highest net ROAS at 127.15x ($41.4K gross profit)
-led by Q4_Email_Cart_Abandonment. Paid Search generated $148.9K gross revenue
-with a net ROAS of 26.35x on Brand campaigns."
+"Email marketing delivered the highest ROAS at 341.6x ($1.77M gross profit on a $10K budget).
+Adwords generated $6.02M gross profit with a 241.1x ROAS on a $50K budget across 876K sessions."
 ```
